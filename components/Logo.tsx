@@ -28,11 +28,11 @@ const Logo: React.FC<LogoProps> = ({ className = '', variant = 'default' }) => {
   }
 
   return (
-    <div className={`flex items-center space-x-3 ${className}`}>
+    <div className="flex items-center space-x-3">
       <img
         src={logo}
         alt="Jasper Labs"
-        className="h-10 md:h-12 w-auto"
+        className={`w-auto ${className || 'h-10 md:h-12'}`}
       />
     </div>
   );

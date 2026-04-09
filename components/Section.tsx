@@ -4,20 +4,14 @@ interface SectionProps {
   id: string;
   children: ReactNode;
   className?: string;
-  fullHeight?: boolean;
 }
 
-const Section: React.FC<SectionProps> = ({ id, children, className = '', fullHeight = false }) => {
+const Section: React.FC<SectionProps> = ({ id, children, className = '' }) => {
   return (
-    <section
-      id={id}
-      className={`${fullHeight ? 'min-h-screen' : 'py-20 md:py-32'} ${className}`}
-    >
+    <section id={id} className={className}>
       {children}
     </section>
   );
 };
 
 export default Section;
-
-

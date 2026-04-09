@@ -45,11 +45,9 @@
     }
   </script>
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
+    html, body {
+      overflow: hidden;
+      height: 100%;
       background-color: #ffffff;
       color: #000000;
     }
@@ -59,23 +57,44 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    /* Global text selection */
+    ::selection {
+      background: #2563EB;
+      color: #ffffff;
+    }
+
+    /* Focus ring */
+    :focus-visible {
+      outline: 2px solid #2563EB;
+      outline-offset: 2px;
+    }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 10px;
+      width: 8px;
     }
 
     ::-webkit-scrollbar-track {
       background: #ffffff;
-      border-left: 2px solid #000000;
+      border-left: 1px solid #e5e7eb;
     }
 
     ::-webkit-scrollbar-thumb {
       background: #000000;
-      border: 2px solid #000000;
     }
 
     ::-webkit-scrollbar-thumb:hover {
       background: #2563EB;
+    }
+
+    /* Smooth image loading */
+    img {
+      transition: opacity 0.3s ease;
+    }
+
+    /* Button and interactive element cursor */
+    button, [role="button"] {
+      cursor: pointer;
     }
   </style>
   <script type="importmap">
