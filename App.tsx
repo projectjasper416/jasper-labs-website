@@ -242,93 +242,93 @@ const App: React.FC = () => {
                 <span className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-white -translate-x-px translate-y-px" />
                 <span className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white translate-x-px translate-y-px" />
 
-              <motion.h2
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-4xl sm:text-5xl font-bold font-display tracking-tighter uppercase text-white mb-10"
-              >
-                Get in Touch
-              </motion.h2>
+                <motion.h2
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-4xl sm:text-5xl font-bold font-display tracking-tighter uppercase text-white mb-10"
+                >
+                  Get in Touch
+                </motion.h2>
 
-              <motion.form
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                onSubmit={handleSubmit}
-                className="space-y-8"
-              >
-                {/* Row 1: Name + Topic side by side */}
-                <div className="grid sm:grid-cols-2 gap-8">
+                <motion.form
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  onSubmit={handleSubmit}
+                  className="space-y-8"
+                >
+                  {/* Row 1: Name + Topic side by side */}
+                  <div className="grid sm:grid-cols-2 gap-8">
+                    <div className="group space-y-2 border-b border-white/25 pb-3 focus-within:border-blue-500 transition-colors duration-300">
+                      <p className="text-xs font-mono text-gray-500 uppercase tracking-widest group-focus-within:text-blue-400 transition-colors duration-200">Hi, I'm</p>
+                      <input
+                        type="text" id="name" name="name" required
+                        className="w-full bg-transparent text-white text-lg font-display focus:outline-none placeholder:text-white/25 transition-colors duration-200"
+                        placeholder="your name"
+                      />
+                    </div>
+
+                    <div className="group space-y-2 border-b border-white/25 pb-3 focus-within:border-blue-500 transition-colors duration-300">
+                      <p className="text-xs font-mono text-gray-500 uppercase tracking-widest group-focus-within:text-blue-400 transition-colors duration-200">reaching out about</p>
+                      <select
+                        id="inquiryType" name="inquiryType"
+                        className="w-full bg-transparent text-white text-lg font-display focus:outline-none cursor-pointer appearance-none transition-colors duration-200"
+                      >
+                        <option value="partnership" className="bg-black">Partnership</option>
+                        <option value="collaboration" className="bg-black">Collaboration</option>
+                        <option value="careers" className="bg-black">Career Opportunity</option>
+                        <option value="general" className="bg-black">Something else</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Message */}
                   <div className="group space-y-2 border-b border-white/25 pb-3 focus-within:border-blue-500 transition-colors duration-300">
-                    <p className="text-xs font-mono text-gray-500 uppercase tracking-widest group-focus-within:text-blue-400 transition-colors duration-200">Hi, I'm</p>
-                    <input
-                      type="text" id="name" name="name" required
-                      className="w-full bg-transparent text-white text-lg font-display focus:outline-none placeholder:text-white/25 transition-colors duration-200"
-                      placeholder="your name"
+                    <p className="text-xs font-mono text-gray-500 uppercase tracking-widest group-focus-within:text-blue-400 transition-colors duration-200">Here's what I have in mind</p>
+                    <textarea
+                      id="message" name="message" required rows={3}
+                      className="w-full bg-transparent text-white text-lg font-display focus:outline-none resize-none placeholder:text-white/25 transition-colors duration-200"
+                      placeholder="tell us about your idea..."
                     />
                   </div>
 
+                  {/* Email */}
                   <div className="group space-y-2 border-b border-white/25 pb-3 focus-within:border-blue-500 transition-colors duration-300">
-                    <p className="text-xs font-mono text-gray-500 uppercase tracking-widest group-focus-within:text-blue-400 transition-colors duration-200">reaching out about</p>
-                    <select
-                      id="inquiryType" name="inquiryType"
-                      className="w-full bg-transparent text-white text-lg font-display focus:outline-none cursor-pointer appearance-none transition-colors duration-200"
+                    <p className="text-xs font-mono text-gray-500 uppercase tracking-widest group-focus-within:text-blue-400 transition-colors duration-200">You can reach me at</p>
+                    <input
+                      type="email" id="email" name="email" required
+                      className="w-full bg-transparent text-white text-lg font-display focus:outline-none placeholder:text-white/25 transition-colors duration-200"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+
+                  {formStatus.type !== 'idle' && (
+                    <div className={`p-4 border font-mono text-sm ${formStatus.type === 'success' ? 'border-green-500 text-green-400' : formStatus.type === 'error' ? 'border-red-500 text-red-400' : 'border-blue-500 text-blue-400'}`}>
+                      {formStatus.type === 'loading' && (
+                        <div className="flex items-center gap-2">
+                          <div className="animate-spin h-4 w-4 border-2 border-current border-t-transparent rounded-full" />
+                          <span className="uppercase">Sending...</span>
+                        </div>
+                      )}
+                      {(formStatus.type === 'success' || formStatus.type === 'error') && (
+                        <p>{formStatus.message}</p>
+                      )}
+                    </div>
+                  )}
+
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={formStatus.type === 'loading'}
+                      className="group inline-flex items-center gap-4 px-10 py-4 bg-white text-black font-bold uppercase tracking-widest text-sm hover:bg-blue-600 hover:text-white transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
                     >
-                      <option value="partnership" className="bg-black">a partnership</option>
-                      <option value="collaboration" className="bg-black">a collaboration</option>
-                      <option value="careers" className="bg-black">a career opportunity</option>
-                      <option value="general" className="bg-black">something else</option>
-                    </select>
+                      {formStatus.type === 'loading' ? 'Sending...' : 'Send it'}
+                      <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                    </button>
                   </div>
-                </div>
-
-                {/* Message */}
-                <div className="group space-y-2 border-b border-white/25 pb-3 focus-within:border-blue-500 transition-colors duration-300">
-                  <p className="text-xs font-mono text-gray-500 uppercase tracking-widest group-focus-within:text-blue-400 transition-colors duration-200">Here's what I have in mind</p>
-                  <textarea
-                    id="message" name="message" required rows={3}
-                    className="w-full bg-transparent text-white text-lg font-display focus:outline-none resize-none placeholder:text-white/25 transition-colors duration-200"
-                    placeholder="tell us about your idea..."
-                  />
-                </div>
-
-                {/* Email */}
-                <div className="group space-y-2 border-b border-white/25 pb-3 focus-within:border-blue-500 transition-colors duration-300">
-                  <p className="text-xs font-mono text-gray-500 uppercase tracking-widest group-focus-within:text-blue-400 transition-colors duration-200">You can reach me at</p>
-                  <input
-                    type="email" id="email" name="email" required
-                    className="w-full bg-transparent text-white text-lg font-display focus:outline-none placeholder:text-white/25 transition-colors duration-200"
-                    placeholder="your@email.com"
-                  />
-                </div>
-
-                {formStatus.type !== 'idle' && (
-                  <div className={`p-4 border font-mono text-sm ${formStatus.type === 'success' ? 'border-green-500 text-green-400' : formStatus.type === 'error' ? 'border-red-500 text-red-400' : 'border-blue-500 text-blue-400'}`}>
-                    {formStatus.type === 'loading' && (
-                      <div className="flex items-center gap-2">
-                        <div className="animate-spin h-4 w-4 border-2 border-current border-t-transparent rounded-full" />
-                        <span className="uppercase">Sending...</span>
-                      </div>
-                    )}
-                    {(formStatus.type === 'success' || formStatus.type === 'error') && (
-                      <p>{formStatus.message}</p>
-                    )}
-                  </div>
-                )}
-
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    disabled={formStatus.type === 'loading'}
-                    className="group inline-flex items-center gap-4 px-10 py-4 bg-white text-black font-bold uppercase tracking-widest text-sm hover:bg-blue-600 hover:text-white transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
-                  >
-                    {formStatus.type === 'loading' ? 'Sending...' : 'Send it'}
-                    <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-                  </button>
-                </div>
-              </motion.form>
+                </motion.form>
 
               </div>{/* /frame */}
             </div>
