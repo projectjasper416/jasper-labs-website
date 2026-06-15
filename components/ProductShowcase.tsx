@@ -40,12 +40,13 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onContact }) => {
             cta: 'Learn More',
         },
         {
-            tag: 'Custom Retell AI Voice Agent',
+            tag: 'Custom AI Voice Agent',
             name: 'Voice Agent',
             description:
-                'A Retell-powered voice agent customized to your business — handling appointment booking and changes, customer support, and anything else your workflow needs.',
+                'A 24/7 AI voice receptionist customized to your business — answering every call to handle appointment booking and changes, customer support, and anything else your workflow needs.',
             icon: PhoneCall,
-            cta: 'Request a Demo',
+            to: '/products/voice-agent',
+            cta: 'Learn More',
         },
     ];
 
