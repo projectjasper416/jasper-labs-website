@@ -7,7 +7,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen bg-white text-black overflow-hidden selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-white text-black selection:bg-blue-600 selection:text-white">
       {/* Subtle grid texture */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.035]"
         style={{

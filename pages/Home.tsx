@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import Layout from '../components/Layout';
@@ -13,78 +13,42 @@ import { motion } from 'framer-motion';
 
 const SECTION_IDS = ['home', 'research', 'products', 'contact'] as const;
 type SectionId = typeof SECTION_IDS[number];
-const TRANSITION_MS = 700;
 
 const Home: React.FC = () => {
   const location = useLocation();
-  const initialSection = (location.state as { section?: number } | null)?.section ?? 0;
 
-  const [activeSectionIndex, setActiveSectionIndex] = useState(initialSection);
+  const [activeSection, setActiveSection] = useState<SectionId>('home');
   const [formStatus, setFormStatus] = useState<{ type: 'idle' | 'loading' | 'success' | 'error'; message?: string }>({ type: 'idle' });
 
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const activeIndexRef = useRef(initialSection);
-  const isTransitioningRef = useRef(false);
-  const touchStartY = useRef(0);
-
-  const goToSection = useCallback((index: number) => {
-    if (index < 0 || index >= SECTION_IDS.length || isTransitioningRef.current) return;
-    isTransitioningRef.current = true;
-    activeIndexRef.current = index;
-    setActiveSectionIndex(index);
-    const target = sectionRefs.current[index];
-    if (target) target.scrollTop = 0;
-    setTimeout(() => { isTransitioningRef.current = false; }, TRANSITION_MS);
+  const scrollToSection = useCallback((id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, []);
 
-  // Intercept wheel events — advance section when at top/bottom edge, otherwise let section scroll
+  // When navigating back from a product page, jump straight to the requested section.
   useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      const index = activeIndexRef.current;
-      const ref = sectionRefs.current[index];
-      if (!ref) return;
+    const target = (location.state as { section?: number } | null)?.section;
+    if (target == null || !SECTION_IDS[target]) return;
+    requestAnimationFrame(() => {
+      document.getElementById(SECTION_IDS[target])?.scrollIntoView({ behavior: 'auto', block: 'start' });
+    });
+  }, [location.state]);
 
-      const { scrollTop, scrollHeight, clientHeight } = ref;
-      const atBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight - 2;
-      const atTop = scrollTop <= 2;
-
-      if (e.deltaY > 0 && atBottom) {
-        e.preventDefault();
-        goToSection(index + 1);
-      } else if (e.deltaY < 0 && atTop) {
-        e.preventDefault();
-        goToSection(index - 1);
-      }
-    };
-
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => window.removeEventListener('wheel', handleWheel);
-  }, [goToSection]);
-
-  // Touch support for mobile
+  // Highlight the nav item for whichever section is currently in view.
   useEffect(() => {
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartY.current = e.touches[0].clientY;
-    };
-    const handleTouchEnd = (e: TouchEvent) => {
-      const index = activeIndexRef.current;
-      const ref = sectionRefs.current[index];
-      if (!ref) return;
-      const delta = touchStartY.current - e.changedTouches[0].clientY;
-      if (Math.abs(delta) < 60) return;
-      const { scrollTop, scrollHeight, clientHeight } = ref;
-      const atBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight - 2;
-      const atTop = scrollTop <= 2;
-      if (delta > 0 && atBottom) goToSection(index + 1);
-      else if (delta < 0 && atTop) goToSection(index - 1);
-    };
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchend', handleTouchEnd, { passive: true });
-    return () => {
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, [goToSection]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id as SectionId);
+        });
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -156,34 +120,21 @@ const Home: React.FC = () => {
     }
   ];
 
-  // Shared transition for all dissolves
-  const dissolve = { duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] as const };
-
+  // Sections now render in normal document flow; the page scrolls natively.
   const overlay = (index: number, content: React.ReactNode) => (
-    <motion.div
-      key={index}
-      ref={(el) => { sectionRefs.current[index] = el; }}
-      className="fixed inset-0 overflow-y-auto pb-16"
-      animate={{ opacity: activeSectionIndex === index ? 1 : 0 }}
-      transition={dissolve}
-      style={{
-        zIndex: activeSectionIndex === index ? 2 : 1,
-        pointerEvents: activeSectionIndex === index ? 'auto' : 'none',
-      }}
-    >
-      {content}
-    </motion.div>
+    <React.Fragment key={index}>{content}</React.Fragment>
   );
 
   return (
     <Layout>
-      <Navigation
-        currentSection={SECTION_IDS[activeSectionIndex]}
-        onNavigate={(id) => goToSection(SECTION_IDS.indexOf(id as SectionId))}
-      />
+      <div className="pb-16">
+        <Navigation
+          currentSection={activeSection}
+          onNavigate={scrollToSection}
+        />
 
-      {/* Section 0 — Home */}
-      {overlay(0, <Hero onExplore={() => goToSection(1)} />)}
+        {/* Section 0 — Home */}
+        {overlay(0, <Hero onExplore={() => scrollToSection('research')} />)}
 
       {/* Section 1 — Research */}
       {overlay(1,
@@ -246,7 +197,7 @@ const Home: React.FC = () => {
               </p>
             </motion.div>
 
-            <ProductShowcase onContact={() => goToSection(3)} />
+            <ProductShowcase onContact={() => scrollToSection('contact')} />
           </div>
         </Section>
       )}
@@ -287,7 +238,7 @@ const Home: React.FC = () => {
                       <input
                         type="text" id="name" name="name" required
                         className="w-full bg-transparent text-white text-lg font-display focus:outline-none placeholder:text-white/25 transition-colors duration-200"
-                        placeholder="your name"
+                        placeholder="Your name"
                       />
                     </div>
 
@@ -311,7 +262,7 @@ const Home: React.FC = () => {
                     <textarea
                       id="message" name="message" required rows={3}
                       className="w-full bg-transparent text-white text-lg font-display focus:outline-none resize-none placeholder:text-white/25 transition-colors duration-200"
-                      placeholder="tell us about your idea..."
+                      placeholder="Tell us about your idea..."
                     />
                   </div>
 
@@ -321,7 +272,7 @@ const Home: React.FC = () => {
                     <input
                       type="email" id="email" name="email" required
                       className="w-full bg-transparent text-white text-lg font-display focus:outline-none placeholder:text-white/25 transition-colors duration-200"
-                      placeholder="your@email.com"
+                      placeholder="example@gmail.com"
                     />
                   </div>
 
@@ -372,6 +323,7 @@ const Home: React.FC = () => {
           </footer>
         </>
       )}
+      </div>
     </Layout>
   );
 };
