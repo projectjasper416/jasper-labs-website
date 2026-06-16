@@ -32,40 +32,40 @@ const principles = [
     {
         icon: Database,
         title: 'Schema is discovered',
-        body: 'Our agent maps your unique database at setup — every table, column, and relationship. Nothing is hardcoded. Connect a different product and it figures the new one out on its own.',
+        body: 'It maps your database at setup — nothing hardcoded. Connect any product and it learns the new one.',
     },
     {
         icon: Radar,
         title: 'Signals are raw facts',
-        body: 'It works from measurable truths about behavior — "last active 14 days ago", "2 of 5 features used", "payment started, never completed" — not pre-baked campaign categories. You approve which signals matter.',
+        body: 'It works from real behavior — "last active 14 days ago", "checkout started, never finished". You approve which signals matter.',
     },
     {
         icon: Brain,
         title: 'Decisions are reasoned',
-        body: 'No if/else rules. For every user, this intelligent Agent weighs the full combination of signals against your product context and decides what — if anything — is worth saying today, then writes it from scratch.',
+        body: 'No if/else rules. It weighs each user\'s signals, decides what\'s worth saying today, and writes it from scratch.',
     },
 ];
 
 const setupSteps = [
-    { n: '01', title: 'Connect your database', body: 'We connect to your database your way, with access you control. It stays secure, and nothing else in your stack is touched.' },
-    { n: '02', title: 'Fill the onboarding brief', body: 'A 5–10 minute form on your product, conversion model, and tone. It becomes an intelligent product brief that guides every decision — not a rigid template.' },
-    { n: '03', title: 'Your schema gets mapped', body: 'The system reads your brief, analyzes your database, and produces a precise map plus a list of behavioral signals it found in your data.' },
-    { n: '04', title: 'You approve the signals', body: 'A simple yes/no on each signal. The ones you approve become the vocabulary the system reasons with. Setup is done.' },
+    { n: '01', title: 'Connect your database', body: 'We connect your way, with access you control. Secure, and nothing else is touched.' },
+    { n: '02', title: 'Fill a short brief', body: 'A few minutes on your product, model, and tone. It becomes the brief that guides every decision.' },
+    { n: '03', title: 'Your schema gets mapped', body: 'It analyzes your database and finds the behavioral signals in your data.' },
+    { n: '04', title: 'You approve the signals', body: 'A quick yes/no on each. The ones you keep are what it reasons with.' },
 ];
 
 const dailySteps = [
-    { icon: Brain, title: 'Analyze & draft', body: 'The system reads your data and behavioral signals intelligently, reasons over each user, and prepares a personalized draft for everyone worth reaching today.' },
-    { icon: ShieldCheck, title: 'You approve the batch', body: 'Every planned draft is sent to you for review. Read them, then approve or cancel the whole batch with one tap.' },
-    { icon: Send, title: 'Deliver & log', body: 'Only after your approval does it send the emails, with one-click unsubscribe built in, and log every decision for a full audit trail.' },
+    { icon: Brain, title: 'Analyze & draft', body: 'It reads your data and signals, reasons over each user, and drafts an email for everyone worth reaching.' },
+    { icon: ShieldCheck, title: 'You approve the batch', body: 'Every draft comes to you. Approve or cancel the batch in one tap.' },
+    { icon: Send, title: 'Deliver & log', body: 'After approval it sends — with one-click unsubscribe — and logs every decision.' },
 ];
 
 const outcomes = [
-    { title: 'Convert at the right moment', body: 'Move free users to paid exactly when their behavior says they are ready — not on a fixed day-7 timer.' },
-    { title: 'Activate stalled users', body: 'Reach people who are one step from the value moment and give them the specific nudge that gets them there.' },
-    { title: 'Win back dormant users', body: 'Re-engage accounts going quiet before they churn, with a reason to come back that fits what they last did.' },
-    { title: 'Recover abandoned checkouts', body: 'Follow up with users who started paying and dropped off, referencing exactly where they left.' },
-    { title: 'Drive feature discovery', body: 'Surface the underused capability that matters most to each user, instead of a generic feature blast.' },
-    { title: 'Or any goal you define', body: 'Tell it what success looks like for your product and it optimizes toward that — every brief is fully customized.' },
+    { title: 'Convert at the right moment', body: 'Move free users to paid when they\'re ready — not on a day-7 timer.' },
+    { title: 'Activate stalled users', body: 'Nudge people who are one step from the value moment.' },
+    { title: 'Win back dormant users', body: 'Re-engage quiet accounts before they churn.' },
+    { title: 'Recover abandoned checkouts', body: 'Follow up where users dropped off.' },
+    { title: 'Drive feature discovery', body: 'Surface the feature that matters most to each user.' },
+    { title: 'Or any goal you define', body: 'Tell it what success means — every brief is custom.' },
 ];
 
 const SectionHeading: React.FC<{ eyebrow: string; title: string }> = ({ eyebrow, title }) => (
@@ -101,9 +101,8 @@ const EmailMarketingAgent: React.FC = () => {
                         transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                         className="mt-8 text-lg md:text-xl font-mono leading-relaxed text-gray-700 max-w-2xl border-l-2 border-black pl-6"
                     >
-                        A multi-agent system any SaaS product can plug into. It learns your database,
-                        understands your product, finds the behavioral signals hiding in your data, and writes a
-                        genuinely personal email to each user — every single day.
+                        A multi-agent system that learns your product, reads each user's behavior, and writes a
+                        genuinely personal email — every day.
                     </motion.p>
 
                     <motion.div
@@ -153,24 +152,22 @@ const EmailMarketingAgent: React.FC = () => {
                         <motion.div {...fadeUp} className="p-8 border-b-2 md:border-b-0 md:border-r-2 border-black">
                             <h3 className="text-xl font-bold font-display uppercase mb-3">Rule-based systems</h3>
                             <p className="font-mono text-sm leading-relaxed text-gray-700">
-                                Hardcoded triggers that fire on fixed conditions. Predictable but dumb — they can't reason
-                                across multiple signals at once, they apply the same logic to everyone, and every new
-                                campaign needs engineering.
+                                Hardcoded triggers on fixed conditions. They can't reason across signals, treat everyone
+                                the same, and need engineering for every new campaign.
                             </p>
                         </motion.div>
                         <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="p-8">
                             <h3 className="text-xl font-bold font-display uppercase mb-3">Generic platforms</h3>
                             <p className="font-mono text-sm leading-relaxed text-gray-700">
-                                Mailchimp, Customer.io and friends need manual segments, manual copy, and manual
-                                scheduling. They have no understanding of your specific schema or the nuances that make
-                                one user's situation different from the next.
+                                Mailchimp and the like need manual segments, copy, and scheduling — with no understanding
+                                of your data or what makes one user different from the next.
                             </p>
                         </motion.div>
                     </div>
                     <motion.p {...fadeUp} className="text-xl md:text-2xl font-display tracking-tight max-w-3xl">
-                        Neither can look at a user who signed up two weeks ago, used two of your features a handful of
-                        times, started a checkout but never finished, and is still on the free plan — and write the one
-                        email that speaks to exactly that. <span className="text-blue-600">That takes reasoning, not rules.</span>
+                        Neither can spot a user who tried a couple of features, started a checkout but never finished,
+                        and is still on free — and write the one email for exactly that.
+                        <span className="text-blue-600"> That takes reasoning, not rules.</span>
                     </motion.p>
                 </div>
             </section>
@@ -261,9 +258,8 @@ const EmailMarketingAgent: React.FC = () => {
                         <span className="text-xs font-bold font-mono uppercase tracking-[0.2em] text-blue-500">Human in the loop</span>
                         <h2 className="text-3xl md:text-5xl font-bold font-display tracking-tighter uppercase">Nothing sends without your tap</h2>
                         <p className="font-mono text-base leading-relaxed text-gray-300">
-                            Every planned email arrives for your review as a full draft — recipient, subject, body, CTA,
-                            and the signal that drove the decision. Approve or cancel the whole batch. If you don't
-                            respond in time, the run auto-expires so a stale batch never goes out.
+                            Every draft comes to you first — subject, body, and the signal behind it. Approve or cancel
+                            the batch. No response in time, and it auto-expires.
                         </p>
                     </motion.div>
                     <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="border-2 border-white/20 p-6 font-mono text-sm space-y-3">
@@ -280,7 +276,7 @@ const EmailMarketingAgent: React.FC = () => {
                         </div>
                         <div className="border-l-2 border-blue-500 pl-3">
                             <p className="text-gray-400 text-xs uppercase tracking-widest">Why this user — a fixed campaign would miss it</p>
-                            <p className="text-white/70 text-xs leading-relaxed">Repeatedly explored a locked premium feature, active almost daily, never started a trial. That's buying intent no scheduled blast would ever surface.</p>
+                            <p className="text-white/70 text-xs leading-relaxed">Repeatedly explored a locked feature, active daily, never trialed. Buying intent no scheduled blast would catch.</p>
                         </div>
                         <div className="flex gap-3 pt-2">
                             <span className="flex-1 text-center py-2 bg-blue-600 text-white text-xs font-bold uppercase tracking-widest">Approve</span>
@@ -296,8 +292,7 @@ const EmailMarketingAgent: React.FC = () => {
                     <div className="space-y-5 max-w-3xl">
                         <SectionHeading eyebrow="What it drives" title="Whatever you're optimizing for" />
                         <motion.p {...fadeUp} className="font-mono text-base leading-relaxed text-gray-700">
-                            Because the multi-agent system learns your product and reasons per user, it isn't locked to
-                            one playbook. Tell it the goal and it works toward it. A few of the common ones:
+                            It reasons per user, so it isn't locked to one playbook. Tell it the goal — a few common ones:
                         </motion.p>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-0 border-2 border-black bg-black">

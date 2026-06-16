@@ -38,47 +38,47 @@ const stats = [
 ];
 
 const capabilities = [
-    { icon: Phone, title: 'Answer every call, instantly', body: 'Every caller gets a live response in seconds — 10 AM on a Tuesday or 9 PM on a Sunday. Always available, never on hold.' },
-    { icon: CalendarCheck, title: 'Book, reschedule & cancel', body: 'It checks your live calendar during the call to book open slots, and can find an existing booking to change or cancel it — updating your calendar instantly, no staff involvement needed.' },
-    { icon: MessageSquare, title: 'Send SMS confirmations', body: 'After every booking, reschedule, or cancellation the customer gets a text with the service, date, time, staff member, and address — in your brand voice.' },
-    { icon: HelpCircle, title: 'Answer common questions', body: 'Knows your services, pricing, hours, location, parking, staff, and policies. Customers get instant, accurate answers — no callback required.' },
-    { icon: Bell, title: 'Make reminder calls', body: 'Calls customers ahead of upcoming appointments to confirm, cutting no-shows and last-minute cancellations that drain your schedule.' },
-    { icon: UserCheck, title: 'Transfer to a human', body: 'If a caller wants a real person, it connects them to you or your team instantly. Human escalation is always one sentence away.' },
-    { icon: Repeat, title: 'Catch the overflow', body: 'Even during open hours it acts as a safety net — when your front desk is already busy, it catches the overflow so nothing hits voicemail.' },
-    { icon: Sparkles, title: 'Handle custom tasks', body: 'Beyond calls and bookings — tell us the jobs your front desk does and we build them into the agent as custom tasks, made just for your business.' },
+    { icon: Phone, title: 'Answer every call, instantly', body: 'A live response in seconds, day or night. Never a voicemail, never on hold.' },
+    { icon: CalendarCheck, title: 'Book, reschedule & cancel', body: 'Checks your live calendar on the call and updates bookings instantly — no staff needed.' },
+    { icon: MessageSquare, title: 'Send SMS confirmations', body: 'Every booking gets an instant text with all the details, in your brand voice.' },
+    { icon: HelpCircle, title: 'Answer common questions', body: 'Knows your services, pricing, hours, and policies — and answers on the spot.' },
+    { icon: Bell, title: 'Make reminder calls', body: 'Calls ahead to confirm appointments and cut no-shows.' },
+    { icon: UserCheck, title: 'Transfer to a human', body: 'Asks for a person? It connects them to your team instantly.' },
+    { icon: Repeat, title: 'Catch the overflow', body: 'A safety net when your front desk is busy, so nothing hits voicemail.' },
+    { icon: Sparkles, title: 'Handle custom tasks', body: 'Tell us the jobs your front desk does and we build them in.' },
 ];
 
 const callFlow = [
-    { icon: Phone, title: 'Your customer calls', body: 'They dial your existing business number, exactly like they always have.' },
-    { icon: PhoneForwarded, title: 'Smart routing kicks in', body: 'Based on your rules, the call either rings your phone first or goes straight to the AI.' },
-    { icon: Mic, title: 'The AI answers', body: 'It greets the caller by your business name, in the tone and personality you chose.' },
-    { icon: Calendar, title: 'It checks your calendar', body: 'The agent looks up your real-time availability and finds the open slots.' },
-    { icon: CalendarCheck, title: 'The appointment is booked', body: 'It confirms date, time, service, and staff member, then writes the booking straight into your calendar.' },
-    { icon: MessageSquare, title: 'A confirmation text goes out', body: 'The customer instantly receives an SMS with every detail. The whole call takes under two minutes.' },
+    { icon: Phone, title: 'Your customer calls', body: 'They dial your existing number, like always.' },
+    { icon: PhoneForwarded, title: 'Smart routing kicks in', body: 'Your phone rings first, or it goes straight to the AI — your rules.' },
+    { icon: Mic, title: 'The AI answers', body: 'Greets the caller by your business name, in your chosen voice.' },
+    { icon: Calendar, title: 'It checks your calendar', body: 'Looks up your real-time availability.' },
+    { icon: CalendarCheck, title: 'The appointment is booked', body: 'Confirms the details and writes it to your calendar.' },
+    { icon: MessageSquare, title: 'A confirmation text goes out', body: 'An instant SMS with every detail. Under two minutes, start to finish.' },
 ];
 
 const routing = [
-    { title: 'Business-hours fallback', body: 'Your phone rings first. If you don\'t pick up within thirty seconds, the AI steps in. You stay in control during the day.' },
-    { title: 'After-hours coverage', body: 'Once you close, every call goes straight to the AI. No ringing on your phone — you rest, it works.' },
-    { title: 'Always-on AI', body: 'The AI answers every call at all hours, so nothing ever reaches your personal phone.' },
-    { title: 'Human takeover', body: 'The AI hands the call to you or a team member the moment a caller asks for a person.' },
-    { title: 'Call forwarding', body: 'Route calls to any mobile, landline, or team member based on your rules.' },
-    { title: 'Custom schedules', body: 'Set specific handling for holidays, lunch breaks, staff meetings, vacations, or any special day.' },
+    { title: 'Business-hours fallback', body: 'Your phone rings first; the AI steps in if you don\'t pick up.' },
+    { title: 'After-hours coverage', body: 'After you close, every call goes straight to the AI.' },
+    { title: 'Always-on AI', body: 'The AI answers every call, at every hour.' },
+    { title: 'Human takeover', body: 'Hands the call to your team the moment someone asks.' },
+    { title: 'Call forwarding', body: 'Route calls to any mobile, landline, or team member.' },
+    { title: 'Custom schedules', body: 'Special handling for holidays, breaks, and vacations.' },
 ];
 
 const customization = [
-    { icon: Mic, title: 'Name, voice & personality', body: 'Warm and calm for a spa, crisp and efficient for a clinic — matched exactly to your brand.' },
-    { icon: Settings2, title: 'Services & pricing', body: 'Your full menu of services and prices, answered accurately whenever a caller asks.' },
-    { icon: Clock, title: 'Business hours', body: 'Opening and closing times, breaks, holidays, and seasonal schedules — all built in.' },
-    { icon: Users, title: 'Your staff members', body: 'It knows your practitioners by name and books callers with the right person.' },
-    { icon: MapPin, title: 'Location & FAQs', body: 'Address, parking, transit, cancellation policy, payment methods, and anything else customers ask.' },
+    { icon: Mic, title: 'Name, voice & personality', body: 'Matched to your brand — calm for a spa, crisp for a clinic.' },
+    { icon: Settings2, title: 'Services & pricing', body: 'Your full menu and prices, answered accurately.' },
+    { icon: Clock, title: 'Business hours', body: 'Hours, breaks, holidays, and seasonal schedules.' },
+    { icon: Users, title: 'Your staff members', body: 'Knows your team by name and books the right person.' },
+    { icon: MapPin, title: 'Location & FAQs', body: 'Address, parking, policies, payments — anything customers ask.' },
 ];
 
 const getStarted = [
-    { n: '01', title: 'Book a demo', body: 'Call a live demo number and experience it yourself — book, ask questions, reschedule. Takes about fifteen minutes.' },
-    { n: '02', title: 'Share your details', body: 'Tell us your services, pricing, hours, staff, location, common questions, and scheduling platform. A simple conversation.' },
-    { n: '03', title: 'We build & test', body: 'In less than a week we build your agent from scratch, connect your calendar, set routing and SMS, and run live test calls.' },
-    { n: '04', title: 'You go live', body: 'Your receptionist starts answering. You wake up to confirmed bookings and never miss a call again.' },
+    { n: '01', title: 'Book a demo', body: 'Call a live demo number and try it yourself. About 15 minutes.' },
+    { n: '02', title: 'Share your details', body: 'Tell us your services, hours, staff, and scheduling platform.' },
+    { n: '03', title: 'We build & test', body: 'We build, connect, and run live test calls — in under a week.' },
+    { n: '04', title: 'You go live', body: 'Your receptionist starts answering. You stop missing calls.' },
 ];
 
 const SectionHeading: React.FC<{ eyebrow: string; title: string }> = ({ eyebrow, title }) => (
@@ -114,9 +114,8 @@ const VoiceAgent: React.FC = () => {
                         transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                         className="mt-8 text-lg md:text-xl font-mono leading-relaxed text-gray-700 max-w-2xl border-l-2 border-black pl-6"
                     >
-                        A 24/7 virtual front desk, built from scratch for your business. It answers every call, books
-                        appointments, sends confirmations, and handles your customers' questions — automatically, around
-                        the clock, and it sounds like a real person on your team.
+                        A 24/7 virtual front desk, built for your business. It answers every call, books appointments,
+                        and sounds like a real person on your team.
                     </motion.p>
 
                     <motion.div
@@ -163,10 +162,8 @@ const VoiceAgent: React.FC = () => {
                 <div className="max-w-6xl mx-auto space-y-12">
                     <SectionHeading eyebrow="The Problem" title="A missed call is a lost customer" />
                     <motion.p {...fadeUp} className="font-mono text-base md:text-lg leading-relaxed text-gray-700 max-w-3xl">
-                        You're with a client. The phone rings. You can't answer. The caller doesn't leave a voicemail —
-                        they call your competitor instead, and you never even know you lost the booking. It happens every
-                        single day to appointment-based businesses: during treatments, lunch breaks, staff meetings, and
-                        after closing time.
+                        You're with a client, the phone rings, and you can't pick up. The caller doesn't leave a
+                        voicemail — they call your competitor instead. It happens to appointment-based businesses every day.
                     </motion.p>
                     <div className="grid sm:grid-cols-2 gap-0 border-2 border-black">
                         <motion.div {...fadeUp} className="p-8 border-b-2 sm:border-b-0 sm:border-r-2 border-black">
@@ -210,10 +207,8 @@ const VoiceAgent: React.FC = () => {
                 <div className="max-w-6xl mx-auto space-y-12">
                     <SectionHeading eyebrow="How it works" title="Tailored to how you work" />
                     <motion.p {...fadeUp} className="font-mono text-base leading-relaxed text-gray-700 max-w-3xl">
-                        Your AI receptionist answers every call and handles whatever you need — bookings, rescheduling,
-                        questions, reminders, or custom tasks built around your business. During your hours your phone
-                        rings first; if you're busy, the AI steps in, and after hours it answers immediately. The flow
-                        below is one common example; every step and conversation is shaped to how you work.
+                        It handles whatever you need — bookings, questions, reminders, or custom tasks. The flow below is
+                        just one example; everything is shaped to how you work.
                     </motion.p>
 
                     <div className="space-y-4">
@@ -250,10 +245,9 @@ const VoiceAgent: React.FC = () => {
                             <h3 className="text-xl md:text-2xl font-bold font-display uppercase tracking-tight">We learn your business first</h3>
                         </div>
                         <p className="font-mono text-sm md:text-base leading-relaxed text-gray-300 max-w-3xl">
-                            Before launch we sit down with you to understand your services, products, hours, policies, and
-                            goals — and we discuss connecting to your existing platforms and scheduling tools if you'd
-                            like any. The agent answers only from your real information, so every call is accurate and on
-                            point, with no guesswork and no hallucinations.
+                            Before launch we learn your services, hours, policies, and goals — and connect to your
+                            existing tools if you'd like. The agent answers only from your real information, so there's no
+                            guesswork and no hallucinations.
                         </p>
                     </motion.div>
                 </div>
@@ -266,8 +260,7 @@ const VoiceAgent: React.FC = () => {
                         <span className="text-xs font-bold font-mono uppercase tracking-[0.2em] text-blue-500">Your calls, your rules</span>
                         <h2 className="text-3xl md:text-5xl font-bold font-display tracking-tighter uppercase">Smart call routing</h2>
                         <p className="font-mono text-base leading-relaxed text-gray-300 max-w-3xl pt-2">
-                            You decide exactly how calls are handled. Set it up once and it runs automatically every day.
-                            These are common setups — any flow you need can be built to your requirements.
+                            You decide how calls are handled — set it once and it runs every day. A few common setups:
                         </p>
                     </motion.div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-0 border-2 border-white/20">
@@ -293,8 +286,8 @@ const VoiceAgent: React.FC = () => {
                     <div className="space-y-5 max-w-3xl">
                         <SectionHeading eyebrow="Built for you" title="Made from scratch for your business" />
                         <motion.p {...fadeUp} className="font-mono text-base leading-relaxed text-gray-700">
-                            This isn't a generic chatbot or a phone tree. Every agent is created specifically for your
-                            business. If you can describe how your ideal receptionist would handle a call, we can build it.
+                            Not a generic phone tree — every agent is built for your business. If you can describe it,
+                            we can build it.
                         </motion.p>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -319,8 +312,8 @@ const VoiceAgent: React.FC = () => {
                         >
                             <Sparkles className="w-6 h-6 text-blue-600 shrink-0" />
                             <p className="font-mono text-xs leading-relaxed text-gray-600">
-                                Custom SMS wording, special booking rules, intake requirements, multi-location handling —
-                                whatever your workflow needs is built into the conversation.
+                                Custom SMS wording, booking rules, intake steps, multi-location handling — whatever your
+                                workflow needs.
                             </p>
                         </motion.div>
                     </div>
@@ -360,8 +353,7 @@ const VoiceAgent: React.FC = () => {
                         Ready to stop missing calls?
                     </motion.h2>
                     <motion.p {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="font-mono text-base text-gray-400 max-w-xl mx-auto">
-                        Book a free fifteen-minute demo and hear your AI receptionist in action. No obligation — just a
-                        live look at exactly how it would work for your business.
+                        Book a free 15-minute demo and hear it in action. No obligation.
                     </motion.p>
                     <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-wrap gap-4 justify-center">
                         <Link
