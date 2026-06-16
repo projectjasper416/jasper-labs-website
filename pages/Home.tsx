@@ -205,104 +205,121 @@ const Home: React.FC = () => {
       {/* Section 3 — Contact + Footer */}
       {overlay(3,
         <>
-          <Section id="contact" className="min-h-screen bg-black text-white flex flex-col justify-center">
-            <div className="w-full max-w-5xl mx-auto px-6 sm:px-10 py-20">
-              <div className="border border-white/20 p-8 sm:p-12 relative">
-                {/* Corner accents */}
-                <span className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-white -translate-x-px -translate-y-px" />
-                <span className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-white translate-x-px -translate-y-px" />
-                <span className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-white -translate-x-px translate-y-px" />
-                <span className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white translate-x-px translate-y-px" />
+          <Section id="contact" className="relative min-h-screen bg-black text-white flex flex-col justify-center overflow-hidden">
+            {/* Ambient background accents */}
+            <div className="pointer-events-none absolute -top-32 -left-32 w-[28rem] h-[28rem] bg-blue-600/20 rounded-full blur-[120px]" />
+            <div className="pointer-events-none absolute -bottom-40 -right-24 w-[32rem] h-[32rem] bg-blue-500/10 rounded-full blur-[140px]" />
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.04]"
+              style={{ backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)', backgroundSize: '48px 48px' }}
+            />
 
-                <motion.h2
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="text-4xl sm:text-5xl font-bold font-display tracking-tighter uppercase text-white mb-10"
-                >
-                  Get in Touch
-                </motion.h2>
+            <div className="relative w-full max-w-6xl mx-auto px-6 sm:px-10 py-24">
+              <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16 items-center">
 
-                <motion.form
-                  initial={{ opacity: 0, y: 30 }}
+                {/* Left — intro & direct contact */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  onSubmit={handleSubmit}
                   className="space-y-8"
                 >
-                  {/* Row 1: Name + Topic side by side */}
-                  <div className="grid sm:grid-cols-2 gap-8">
-                    <div className="group space-y-2 border-b border-white/25 pb-3 focus-within:border-blue-500 transition-colors duration-300">
-                      <p className="text-xs font-mono text-gray-500 uppercase tracking-widest group-focus-within:text-blue-400 transition-colors duration-200">Hi, I'm</p>
+                  <h2 className="text-5xl sm:text-6xl font-bold font-display tracking-tighter uppercase leading-[0.95]">
+                    Let's build<br />something <span className="text-blue-500">real</span>.
+                  </h2>
+
+                  <p className="text-base text-gray-400 font-mono max-w-md leading-relaxed">
+                    Have an idea, a partnership, or just a question? Drop us a line and we'll get back to you.
+                  </p>
+                </motion.div>
+
+                {/* Right — form card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  className="relative bg-white/[0.03] backdrop-blur-sm border border-white/10 p-8 sm:p-10"
+                >
+                  {/* Corner accents */}
+                  <span className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-blue-500 -translate-x-px -translate-y-px" />
+                  <span className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-blue-500 translate-x-px -translate-y-px" />
+                  <span className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-blue-500 -translate-x-px translate-y-px" />
+                  <span className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-blue-500 translate-x-px translate-y-px" />
+
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Row 1: Name + Topic */}
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      <div className="space-y-2">
+                        <label htmlFor="name" className="block text-xs font-mono text-gray-400 uppercase tracking-widest">Name</label>
+                        <input
+                          type="text" id="name" name="name" required
+                          className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-sm font-display rounded-sm focus:outline-none focus:border-blue-500 focus:bg-white/[0.06] focus:ring-1 focus:ring-blue-500/40 placeholder:text-white/30 transition-all duration-200"
+                          placeholder="Your name"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label htmlFor="inquiryType" className="block text-xs font-mono text-gray-400 uppercase tracking-widest">Topic</label>
+                        <select
+                          id="inquiryType" name="inquiryType"
+                          className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-sm font-display rounded-sm focus:outline-none focus:border-blue-500 focus:bg-white/[0.06] focus:ring-1 focus:ring-blue-500/40 cursor-pointer appearance-none transition-all duration-200"
+                        >
+                          <option value="partnership" className="bg-black">Partnership</option>
+                          <option value="collaboration" className="bg-black">Collaboration</option>
+                          <option value="careers" className="bg-black">Career Opportunity</option>
+                          <option value="general" className="bg-black">Something else</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Email */}
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="block text-xs font-mono text-gray-400 uppercase tracking-widest">Email</label>
                       <input
-                        type="text" id="name" name="name" required
-                        className="w-full bg-transparent text-white text-lg font-display focus:outline-none placeholder:text-white/25 transition-colors duration-200"
-                        placeholder="Your name"
+                        type="email" id="email" name="email" required
+                        className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-sm font-display rounded-sm focus:outline-none focus:border-blue-500 focus:bg-white/[0.06] focus:ring-1 focus:ring-blue-500/40 placeholder:text-white/30 transition-all duration-200"
+                        placeholder="example@gmail.com"
                       />
                     </div>
 
-                    <div className="group space-y-2 border-b border-white/25 pb-3 focus-within:border-blue-500 transition-colors duration-300">
-                      <p className="text-xs font-mono text-gray-500 uppercase tracking-widest group-focus-within:text-blue-400 transition-colors duration-200">reaching out about</p>
-                      <select
-                        id="inquiryType" name="inquiryType"
-                        className="w-full bg-transparent text-white text-lg font-display focus:outline-none cursor-pointer appearance-none transition-colors duration-200"
-                      >
-                        <option value="partnership" className="bg-black">Partnership</option>
-                        <option value="collaboration" className="bg-black">Collaboration</option>
-                        <option value="careers" className="bg-black">Career Opportunity</option>
-                        <option value="general" className="bg-black">Something else</option>
-                      </select>
+                    {/* Message */}
+                    <div className="space-y-2">
+                      <label htmlFor="message" className="block text-xs font-mono text-gray-400 uppercase tracking-widest">Message</label>
+                      <textarea
+                        id="message" name="message" required rows={4}
+                        className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-sm font-display rounded-sm focus:outline-none focus:border-blue-500 focus:bg-white/[0.06] focus:ring-1 focus:ring-blue-500/40 resize-none placeholder:text-white/30 transition-all duration-200"
+                        placeholder="Tell us about your idea..."
+                      />
                     </div>
-                  </div>
 
-                  {/* Message */}
-                  <div className="group space-y-2 border-b border-white/25 pb-3 focus-within:border-blue-500 transition-colors duration-300">
-                    <p className="text-xs font-mono text-gray-500 uppercase tracking-widest group-focus-within:text-blue-400 transition-colors duration-200">Here's what I have in mind</p>
-                    <textarea
-                      id="message" name="message" required rows={3}
-                      className="w-full bg-transparent text-white text-lg font-display focus:outline-none resize-none placeholder:text-white/25 transition-colors duration-200"
-                      placeholder="Tell us about your idea..."
-                    />
-                  </div>
+                    {formStatus.type !== 'idle' && (
+                      <div className={`p-4 border font-mono text-sm rounded-sm ${formStatus.type === 'success' ? 'border-green-500/60 bg-green-500/10 text-green-400' : formStatus.type === 'error' ? 'border-red-500/60 bg-red-500/10 text-red-400' : 'border-blue-500/60 bg-blue-500/10 text-blue-400'}`}>
+                        {formStatus.type === 'loading' && (
+                          <div className="flex items-center gap-2">
+                            <div className="animate-spin h-4 w-4 border-2 border-current border-t-transparent rounded-full" />
+                            <span className="uppercase">Sending...</span>
+                          </div>
+                        )}
+                        {(formStatus.type === 'success' || formStatus.type === 'error') && (
+                          <p>{formStatus.message}</p>
+                        )}
+                      </div>
+                    )}
 
-                  {/* Email */}
-                  <div className="group space-y-2 border-b border-white/25 pb-3 focus-within:border-blue-500 transition-colors duration-300">
-                    <p className="text-xs font-mono text-gray-500 uppercase tracking-widest group-focus-within:text-blue-400 transition-colors duration-200">You can reach me at</p>
-                    <input
-                      type="email" id="email" name="email" required
-                      className="w-full bg-transparent text-white text-lg font-display focus:outline-none placeholder:text-white/25 transition-colors duration-200"
-                      placeholder="example@gmail.com"
-                    />
-                  </div>
-
-                  {formStatus.type !== 'idle' && (
-                    <div className={`p-4 border font-mono text-sm ${formStatus.type === 'success' ? 'border-green-500 text-green-400' : formStatus.type === 'error' ? 'border-red-500 text-red-400' : 'border-blue-500 text-blue-400'}`}>
-                      {formStatus.type === 'loading' && (
-                        <div className="flex items-center gap-2">
-                          <div className="animate-spin h-4 w-4 border-2 border-current border-t-transparent rounded-full" />
-                          <span className="uppercase">Sending...</span>
-                        </div>
-                      )}
-                      {(formStatus.type === 'success' || formStatus.type === 'error') && (
-                        <p>{formStatus.message}</p>
-                      )}
-                    </div>
-                  )}
-
-                  <div className="pt-2">
                     <button
                       type="submit"
                       disabled={formStatus.type === 'loading'}
-                      className="group inline-flex items-center gap-4 px-10 py-4 bg-white text-black font-bold uppercase tracking-widest text-sm hover:bg-blue-600 hover:text-white transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+                      className="group w-full inline-flex items-center justify-center gap-3 px-10 py-4 bg-white text-black font-bold uppercase tracking-widest text-sm rounded-sm hover:bg-blue-600 hover:text-white transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
                     >
-                      {formStatus.type === 'loading' ? 'Sending...' : 'Send it'}
+                      {formStatus.type === 'loading' ? 'Sending...' : 'Send Message'}
                       <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
                     </button>
-                  </div>
-                </motion.form>
+                  </form>
+                </motion.div>
 
-              </div>{/* /frame */}
+              </div>
             </div>
           </Section>
 
