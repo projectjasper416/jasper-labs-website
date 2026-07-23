@@ -1,11 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
+import AuditFloatingButton from './AuditFloatingButton';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
     <div className="min-h-screen bg-white text-black selection:bg-blue-600 selection:text-white">
       {/* Subtle grid texture */}
@@ -24,8 +29,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       >
         {children}
       </motion.main>
+
+      <AuditFloatingButton aboveBottomNav={isHomePage} />
     </div>
   );
 };
 
 export default Layout;
+

@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import Layout from '../components/Layout';
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import LabCard from '../components/LabCard';
 import ProductGrid from '../components/ProductGrid';
+import ServicesGrid from '../components/ServicesGrid';
 import ProductShowcase from '../components/ProductShowcase';
 import Section from '../components/Section';
 import Logo from '../components/Logo';
@@ -190,6 +191,22 @@ const Home: React.FC = () => {
               className="text-left space-y-6 pt-4"
             >
               <h3 className="text-4xl md:text-6xl font-bold font-display tracking-tighter uppercase">
+                Services
+              </h3>
+              <p className="text-xl text-gray-600 font-mono max-w-2xl border-l-2 border-black pl-6">
+                Our capabilities engineered to streamline operations, cut costs, and automate outreach.
+              </p>
+            </motion.div>
+
+            <ServicesGrid />
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-left space-y-6 pt-4"
+            >
+              <h3 className="text-4xl md:text-6xl font-bold font-display tracking-tighter uppercase">
                 Built in the Lab
               </h3>
               <p className="text-xl text-gray-600 font-mono max-w-2xl border-l-2 border-black pl-6">
@@ -323,18 +340,58 @@ const Home: React.FC = () => {
             </div>
           </Section>
 
-          <footer className="pt-12 pb-28 bg-black text-white border-t border-white/10">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <Logo className="text-white h-16 md:h-20 w-auto" />
-                <div className="text-center md:text-right space-y-1">
-                  <p className="text-gray-500 text-xs font-mono uppercase tracking-widest">
+          <footer className="pt-16 pb-28 bg-black text-white border-t border-white/10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                {/* Column 1: Logo & Tagline */}
+                <div className="space-y-4">
+                  <Logo className="text-white h-12 w-auto" />
+                  <p className="text-gray-400 text-xs font-mono leading-relaxed max-w-xs">
                     Building the future, one experiment at a time.
                   </p>
-                  <p className="text-gray-600 text-xs font-mono">
-                    &copy; {new Date().getFullYear()} Jasper Labs. All rights reserved.
-                  </p>
                 </div>
+
+                {/* Column 2: Company Links */}
+                <div className="space-y-4">
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-gray-500 font-bold">Company</h4>
+                  <ul className="space-y-2 text-sm font-mono">
+                    <li>
+                      <Link to="/founders" className="text-gray-400 hover:text-white transition-colors duration-200">
+                        Meet the Founders
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => scrollToSection('contact')}
+                        className="text-gray-400 hover:text-white transition-colors duration-200 text-left cursor-pointer"
+                      >
+                        Contact
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Column 3: Connect Links */}
+                <div className="space-y-4">
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-gray-500 font-bold">Connect</h4>
+                  <ul className="space-y-2 text-sm font-mono">
+                    <li>
+                      <a
+                        href="https://www.linkedin.com/company/jasper-labs/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white transition-colors duration-200"
+                      >
+                        LinkedIn
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Bottom Copyright Bar */}
+              <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs font-mono text-gray-600">
+                <p>&copy; {new Date().getFullYear()} Jasper Labs. All rights reserved.</p>
               </div>
             </div>
           </footer>
