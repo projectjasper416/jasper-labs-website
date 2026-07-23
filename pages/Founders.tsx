@@ -112,11 +112,11 @@ const Founders: React.FC = () => {
                     Adityaram Majeti
                   </h2>
                   <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">
-                    AI Product Engineer
+                    AI Engineer
                   </span>
                 </div>
                 <p className="font-mono text-sm leading-relaxed text-gray-600 border-l border-black pl-4">
-                  Adityaram is an AI product engineer who has successfully launched and scaled products across multiple domains and geographies. He focuses on operational delivery, custom customer integrations, and business engines that translate theoretical AI capabilities into commercial value.
+                  Adityaram is an AI engineer who has successfully launched and scaled products across multiple domains and geographies. He focuses on operational delivery, custom customer integrations, and business engines that translate theoretical AI capabilities into commercial value.
                 </p>
               </motion.div>
 
