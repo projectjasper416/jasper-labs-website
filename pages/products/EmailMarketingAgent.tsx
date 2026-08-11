@@ -112,7 +112,7 @@ const EmailMarketingAgent: React.FC = () => {
                     >
                         <Link
                             to="/"
-                            state={{ section: 3 }}
+                            state={{ section: 'contact' }}
                             className="group inline-flex items-center gap-3 px-8 py-4 bg-black text-white font-bold uppercase tracking-widest text-sm hover:bg-blue-600 transition-colors duration-200"
                         >
                             Request a Demo
@@ -321,7 +321,7 @@ const EmailMarketingAgent: React.FC = () => {
                     <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-wrap gap-4 justify-center">
                         <Link
                             to="/"
-                            state={{ section: 3 }}
+                            state={{ section: 'contact' }}
                             className="group inline-flex items-center gap-3 px-10 py-4 bg-white text-black font-bold uppercase tracking-widest text-sm hover:bg-blue-600 hover:text-white transition-colors duration-200"
                         >
                             Request a Demo
@@ -329,7 +329,7 @@ const EmailMarketingAgent: React.FC = () => {
                         </Link>
                         <Link
                             to="/"
-                            state={{ section: 2 }}
+                            state={{ section: 'products' }}
                             className="inline-flex items-center gap-3 px-10 py-4 border-2 border-white/40 font-bold uppercase tracking-widest text-sm hover:border-white transition-colors duration-200"
                         >
                             Back to Products

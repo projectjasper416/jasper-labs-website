@@ -65,7 +65,7 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
                         variants={fadeUp}
                         className="text-xl sm:text-2xl text-gray-400 font-mono max-w-2xl mx-auto border-l-2 border-blue-600 pl-6 text-left md:text-center md:border-l-0 md:border-t-2 md:pt-6"
                     >
-                        INCUBATING IDEAS. GROWING TALENT. DRIVING IMPACT.
+                        WE BUILD CUSTOM AI AGENTS & AUTOMATION FOR BUSINESSES.
                     </motion.p>
 
                     <motion.div variants={fadeUp} className="pt-8 flex justify-center">
@@ -74,7 +74,7 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
                             className="group relative px-8 py-4 bg-white text-black font-bold text-lg uppercase tracking-wider hover:bg-blue-600 hover:text-white transition-colors duration-200"
                         >
                             <span className="flex items-center gap-4">
-                                Explore The Lab
+                                See What We Do
                                 <ArrowRight className="w-6 h-6 transition-transform duration-200 group-hover:translate-x-1" />
                             </span>
                             <div className="absolute top-2 left-2 w-full h-full border-2 border-white/40 -z-10 group-hover:top-0 group-hover:left-0 transition-all duration-200" />

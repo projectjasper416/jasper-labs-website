@@ -142,7 +142,17 @@ const Founders: React.FC = () => {
               <div className="space-y-4">
                 <Logo className="text-white h-12 w-auto" />
                 <p className="text-gray-400 text-xs font-mono leading-relaxed max-w-xs">
-                  Building the future, one experiment at a time.
+                  Custom AI agents and automation, built for businesses.
+                </p>
+                <p className="text-gray-500 text-xs font-mono leading-relaxed">
+                  Hyderabad, Telangana, India
+                  <br />
+                  <a
+                    href="mailto:projectjasper416@gmail.com"
+                    className="hover:text-white transition-colors duration-200"
+                  >
+                    projectjasper416@gmail.com
+                  </a>
                 </p>
               </div>
 
@@ -158,7 +168,7 @@ const Founders: React.FC = () => {
                   <li>
                     <Link
                       to="/"
-                      state={{ section: 3 }}
+                      state={{ section: 'contact' }}
                       className="text-gray-400 hover:text-white transition-colors duration-200"
                     >
                       Contact

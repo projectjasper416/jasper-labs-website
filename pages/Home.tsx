@@ -4,15 +4,15 @@ import emailjs from '@emailjs/browser';
 import Layout from '../components/Layout';
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
-import LabCard from '../components/LabCard';
-import ProductGrid from '../components/ProductGrid';
 import ServicesGrid from '../components/ServicesGrid';
+import UseCases from '../components/UseCases';
+import HowWeWork from '../components/HowWeWork';
 import ProductShowcase from '../components/ProductShowcase';
 import Section from '../components/Section';
 import Logo from '../components/Logo';
 import { motion } from 'framer-motion';
 
-const SECTION_IDS = ['home', 'research', 'products', 'contact'] as const;
+const SECTION_IDS = ['home', 'automate', 'products', 'services', 'contact'] as const;
 type SectionId = typeof SECTION_IDS[number];
 
 const Home: React.FC = () => {
@@ -25,12 +25,13 @@ const Home: React.FC = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, []);
 
-  // When navigating back from a product page, jump straight to the requested section.
+  // When navigating back from another page, jump straight to the requested section.
+  // Keyed by section id rather than index so reordering the page cannot break the links.
   useEffect(() => {
-    const target = (location.state as { section?: number } | null)?.section;
-    if (target == null || !SECTION_IDS[target]) return;
+    const target = (location.state as { section?: string } | null)?.section;
+    if (!target) return;
     requestAnimationFrame(() => {
-      document.getElementById(SECTION_IDS[target])?.scrollIntoView({ behavior: 'auto', block: 'start' });
+      document.getElementById(target)?.scrollIntoView({ behavior: 'auto', block: 'start' });
     });
   }, [location.state]);
 
@@ -82,45 +83,6 @@ const Home: React.FC = () => {
     }
   };
 
-  const labInitiatives = [
-    {
-      title: 'AI Experimentation Lab',
-      description: 'Where we prototype next-generation AI applications. Currently exploring multimodal AI, agentic systems, and responsible AI deployment.',
-      status: 'Active', focus: 'Rapid Prototyping',
-      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'
-    },
-    {
-      title: 'Product Validation Studio',
-      description: 'Turning hypotheses into testable products. We build MVPs, run user experiments, and validate market fit before scaling.',
-      status: 'Active', focus: 'User Validation',
-      image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2070&auto=format&fit=crop'
-    },
-    {
-      title: 'Talent Incubator',
-      description: 'Growing the next generation of builders. We provide hands-on experience with real projects, mentorship, and pathways to impact.',
-      status: 'Active', focus: 'Skill Development',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop'
-    },
-    {
-      title: 'Academic Bridge Lab',
-      description: 'Connecting cutting-edge research with practical applications. We partner with universities to translate academic insights into real-world solutions.',
-      status: 'Active', focus: 'Research Translation',
-      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=2070&auto=format&fit=crop'
-    },
-    {
-      title: 'Sustainability Lab',
-      description: 'Building products that fund themselves. We focus on creating sustainable business models that validate ideas while generating revenue for future innovation.',
-      status: 'Active', focus: 'Sustainable Models',
-      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'
-    },
-    {
-      title: 'Innovation Pipeline',
-      description: 'From idea to impact. Our systematic approach to identifying opportunities, validating assumptions, and launching experiments that matter.',
-      status: 'Active', focus: 'Systematic Innovation',
-      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop'
-    }
-  ];
-
   // Sections now render in normal document flow; the page scrolls natively.
   const overlay = (index: number, content: React.ReactNode) => (
     <React.Fragment key={index}>{content}</React.Fragment>
@@ -135,66 +97,80 @@ const Home: React.FC = () => {
         />
 
         {/* Section 0 — Home */}
-        {overlay(0, <Hero onExplore={() => scrollToSection('research')} />)}
+        {overlay(0, <Hero onExplore={() => scrollToSection('automate')} />)}
 
-      {/* Section 1 — Research */}
+      {/* Section 1 — What AI does for a business, in outcome terms */}
       {overlay(1,
-        <Section id="research" className="py-16 px-4 sm:px-6 lg:px-8 bg-white text-black">
-          <div className="max-w-7xl mx-auto space-y-10">
+        <Section id="automate" className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-white text-black">
+          <div className="max-w-7xl mx-auto space-y-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-left space-y-3"
+              className="text-left space-y-5"
             >
-              <h2 className="text-4xl md:text-6xl font-bold font-display tracking-tighter uppercase">
-                What's in the Lab
+              <span className="text-xs font-bold font-mono uppercase tracking-[0.2em] text-blue-600">
+                What We Automate
+              </span>
+              <h2 className="text-5xl md:text-7xl font-bold font-display tracking-tighter uppercase">
+                Save Time. Cut Cost.<br />Grow Without Hiring.
               </h2>
-              <p className="text-base text-gray-600 font-mono max-w-2xl border-l-2 border-black pl-4">
-                Active experiments, ongoing initiatives, and the work happening right now at Jasper Labs.
+              <p className="text-lg text-gray-600 font-mono max-w-2xl border-l-2 border-black pl-6">
+                Six things every business wants. We build the AI that delivers them.
               </p>
             </motion.div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {labInitiatives.map((lab, index) => (
-                <LabCard key={index} {...lab} index={index} />
-              ))}
-            </div>
+            <UseCases onContact={() => scrollToSection('contact')} />
           </div>
         </Section>
       )}
 
-      {/* Section 2 — Products */}
+      {/* Section 2 — What we've built (proof) */}
       {overlay(2,
-        <Section id="products" className="py-32 px-4 sm:px-6 lg:px-8 bg-gray-100 text-black border-b-4 border-black">
-          <div className="max-w-7xl mx-auto space-y-20">
+        <Section id="products" className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-gray-100 text-black border-y-4 border-black">
+          <div className="max-w-7xl mx-auto space-y-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-left space-y-6"
+              className="text-left space-y-5"
             >
+              <span className="text-xs font-bold font-mono uppercase tracking-[0.2em] text-blue-600">
+                Our Work
+              </span>
               <h2 className="text-5xl md:text-7xl font-bold font-display tracking-tighter uppercase">
-                Product Focus
+                What We've Built
               </h2>
-              <p className="text-xl text-gray-600 font-mono max-w-2xl border-l-2 border-black pl-6">
-                Product thinking is at our core — from how we structure experiments to how we design user experiences.
+              <p className="text-lg text-gray-600 font-mono max-w-2xl border-l-2 border-black pl-6">
+                AI products and agents running in production — and the same engineering we bring to
+                custom builds for businesses.
               </p>
             </motion.div>
 
-            <ProductGrid />
+            <ProductShowcase onContact={() => scrollToSection('contact')} />
+          </div>
+        </Section>
+      )}
 
+      {/* Section 3 — Services */}
+      {overlay(3,
+        <Section id="services" className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-white text-black">
+          <div className="max-w-7xl mx-auto space-y-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-left space-y-6 pt-4"
+              className="text-left space-y-5"
             >
-              <h3 className="text-4xl md:text-6xl font-bold font-display tracking-tighter uppercase">
-                Services
-              </h3>
-              <p className="text-xl text-gray-600 font-mono max-w-2xl border-l-2 border-black pl-6">
-                Our capabilities engineered to streamline operations, cut costs, and automate outreach.
+              <span className="text-xs font-bold font-mono uppercase tracking-[0.2em] text-blue-600">
+                What We Do
+              </span>
+              <h2 className="text-5xl md:text-7xl font-bold font-display tracking-tighter uppercase">
+                Built For Your Business
+              </h2>
+              <p className="text-lg text-gray-600 font-mono max-w-2xl border-l-2 border-black pl-6">
+                Custom AI systems, scoped and engineered for how you already work — integrated with
+                your existing tools and supported after launch.
               </p>
             </motion.div>
 
@@ -204,23 +180,27 @@ const Home: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-left space-y-6 pt-4"
+              className="text-left space-y-5 pt-8"
             >
+              <span className="text-xs font-bold font-mono uppercase tracking-[0.2em] text-blue-600">
+                How We Work
+              </span>
               <h3 className="text-4xl md:text-6xl font-bold font-display tracking-tighter uppercase">
-                Built in the Lab
+                Start Small. Prove It. Scale.
               </h3>
-              <p className="text-xl text-gray-600 font-mono max-w-2xl border-l-2 border-black pl-6">
-                The products and AI agents we've shipped — and the ones we're customizing for businesses right now.
+              <p className="text-lg text-gray-600 font-mono max-w-2xl border-l-2 border-black pl-6">
+                We do not sell a twelve month transformation program. We find one process worth
+                fixing, ship it, and let the result decide what comes next.
               </p>
             </motion.div>
 
-            <ProductShowcase onContact={() => scrollToSection('contact')} />
+            <HowWeWork />
           </div>
         </Section>
       )}
 
-      {/* Section 3 — Contact + Footer */}
-      {overlay(3,
+      {/* Section 4 — Contact + Footer */}
+      {overlay(4,
         <>
           <Section id="contact" className="relative min-h-screen bg-black text-white flex flex-col justify-center overflow-hidden">
             {/* Ambient background accents */}
@@ -247,7 +227,8 @@ const Home: React.FC = () => {
                   </h2>
 
                   <p className="text-base text-gray-400 font-mono max-w-md leading-relaxed">
-                    Have an idea, a partnership, or just a question? Drop us a line and we'll get back to you.
+                    Tell us the process you want to automate. We'll tell you what's worth building —
+                    and what isn't.
                   </p>
                 </motion.div>
 
@@ -283,9 +264,10 @@ const Home: React.FC = () => {
                           id="inquiryType" name="inquiryType"
                           className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-sm font-display rounded-sm focus:outline-none focus:border-blue-500 focus:bg-white/[0.06] focus:ring-1 focus:ring-blue-500/40 cursor-pointer appearance-none transition-all duration-200"
                         >
+                          <option value="project" className="bg-black">New project</option>
+                          <option value="automation" className="bg-black">AI automation audit</option>
                           <option value="partnership" className="bg-black">Partnership</option>
-                          <option value="collaboration" className="bg-black">Collaboration</option>
-                          <option value="careers" className="bg-black">Career Opportunity</option>
+                          <option value="careers" className="bg-black">Career opportunity</option>
                           <option value="general" className="bg-black">Something else</option>
                         </select>
                       </div>
@@ -347,7 +329,17 @@ const Home: React.FC = () => {
                 <div className="space-y-4">
                   <Logo className="text-white h-12 w-auto" />
                   <p className="text-gray-400 text-xs font-mono leading-relaxed max-w-xs">
-                    Building the future, one experiment at a time.
+                    Custom AI agents and automation, built for businesses.
+                  </p>
+                  <p className="text-gray-500 text-xs font-mono leading-relaxed">
+                    Hyderabad, Telangana, India
+                    <br />
+                    <a
+                      href="mailto:projectjasper416@gmail.com"
+                      className="hover:text-white transition-colors duration-200"
+                    >
+                      projectjasper416@gmail.com
+                    </a>
                   </p>
                 </div>
 

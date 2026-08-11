@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Check } from 'lucide-react';
+import { X, Check, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+
+const CONTACT_EMAIL = 'projectjasper416@gmail.com';
 
 interface AuditFloatingButtonProps {
   aboveBottomNav?: boolean;
@@ -8,7 +11,7 @@ interface AuditFloatingButtonProps {
 
 const AuditFloatingButton: React.FC<AuditFloatingButtonProps> = ({ aboveBottomNav = false }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [formState, setFormState] = useState<'idle' | 'loading' | 'success'>('idle');
+  const [formState, setFormState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,12 +26,30 @@ const AuditFloatingButton: React.FC<AuditFloatingButtonProps> = ({ aboveBottomNa
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormState('loading');
 
-    // Simulate API request
-    setTimeout(() => {
+    // Same EmailJS service, template, and key as the contact form on the home page.
+    const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
+    const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
+    const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          to_email: CONTACT_EMAIL,
+          from_name: formData.name,
+          from_email: formData.email,
+          inquiry_type: 'AI Automation Audit request',
+          message: `Company: ${formData.company}\n\nWhat they want to automate:\n${formData.automationNeeds}`,
+          reply_to: formData.email,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
       setFormState('success');
       setFormData({
         name: '',
@@ -41,7 +62,10 @@ const AuditFloatingButton: React.FC<AuditFloatingButtonProps> = ({ aboveBottomNa
         setIsOpen(false);
         setFormState('idle');
       }, 3000);
-    }, 1500);
+    } catch (error) {
+      console.error('Audit request failed:', error);
+      setFormState('error');
+    }
   };
 
   return (
@@ -220,6 +244,19 @@ const AuditFloatingButton: React.FC<AuditFloatingButtonProps> = ({ aboveBottomNa
                           placeholder="Describe the processes or workflows..."
                         />
                       </div>
+
+                      {formState === 'error' && (
+                        <div className="flex gap-2 border border-red-500/50 bg-red-500/10 p-3 font-mono text-xs leading-relaxed text-red-300">
+                          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                          <span>
+                            We couldn't submit that request. Please email us directly at{' '}
+                            <a href={`mailto:${CONTACT_EMAIL}`} className="underline">
+                              {CONTACT_EMAIL}
+                            </a>{' '}
+                            and we'll pick it up.
+                          </span>
+                        </div>
+                      )}
 
                       {/* Submit */}
                       <button

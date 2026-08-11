@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Home, FlaskConical, Rocket, Mail } from 'lucide-react';
+import { Home, Zap, Rocket, Cpu, Mail } from 'lucide-react';
 
 interface NavigationProps {
   currentSection: string;
@@ -10,8 +10,9 @@ interface NavigationProps {
 const Navigation: React.FC<NavigationProps> = ({ currentSection, onNavigate }) => {
   const navItems = [
     { id: 'home', label: 'Home', icon: Home },
-    { id: 'research', label: 'Research', icon: FlaskConical },
-    { id: 'products', label: 'Focus', icon: Rocket },
+    { id: 'automate', label: 'Automate', icon: Zap },
+    { id: 'products', label: 'Work', icon: Rocket },
+    { id: 'services', label: 'Services', icon: Cpu },
     { id: 'contact', label: 'Contact', icon: Mail },
   ];
 

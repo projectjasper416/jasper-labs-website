@@ -54,7 +54,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onContact }) => {
         'flex flex-col h-full p-8 text-left hover:bg-blue-600 hover:text-white transition-colors duration-300 focus:outline-none focus-visible:bg-blue-600 focus-visible:text-white';
 
     return (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-0 border-2 border-black bg-black">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-[2px] border-2 border-black bg-black">
             {products.map((product, index) => {
                 const Icon = product.icon;
                 const inner = (
@@ -100,7 +100,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onContact }) => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: '-40px' }}
                         transition={{ duration: 0.5, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                        className="group flex flex-col bg-white border-b-2 lg:border-b-0 lg:border-r-2 border-black last:border-0"
+                        className="group flex flex-col bg-white"
                     >
                         {product.href ? (
                             <a href={product.href} target="_blank" rel="noopener noreferrer" className={cardClass}>

@@ -42,7 +42,7 @@ const ProductPageLayout: React.FC<ProductPageLayoutProps> = ({ children }) => {
                     </Link>
                     <Link
                         to="/"
-                        state={{ section: 2 }}
+                        state={{ section: 'products' }}
                         className="group inline-flex items-center gap-2 text-xs font-bold font-mono uppercase tracking-widest hover:text-blue-600 transition-colors duration-200"
                     >
                         <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
