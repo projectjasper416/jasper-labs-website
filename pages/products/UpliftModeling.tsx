@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import emberLogo from '../../assets/ember-logo.png';
 import emberMark from '../../assets/ember-mark.png';
 import jasperLabsLogo from '../../assets/jasper-labs.png';
+import './UpliftModeling.css';
 
 const UpliftModeling: React.FC = () => {
   useEffect(() => {
@@ -20,12 +21,12 @@ const UpliftModeling: React.FC = () => {
     // Update Title and Favicon
     document.title = "Ember from Jasperlabs";
     if (faviconLink) {
-      faviconLink.setAttribute('href', '/assets/ember-mark.png');
+      faviconLink.setAttribute('href', emberMark);
     } else {
       faviconLink = document.createElement('link');
       faviconLink.rel = 'icon';
       faviconLink.type = 'image/png';
-      faviconLink.setAttribute('href', '/assets/ember-mark.png');
+      faviconLink.setAttribute('href', emberMark);
       document.head.appendChild(faviconLink);
     }
 
@@ -42,7 +43,7 @@ const UpliftModeling: React.FC = () => {
 
   return (
     <div
-      className="selection:bg-[#A83A0D] selection:text-[#FFF4EC] min-h-screen relative"
+      className="ember-page selection:bg-[#A83A0D] selection:text-[#FFF4EC] min-h-screen relative"
       style={{
         backgroundColor: '#EFE2D4',
         color: '#1E1A14',
@@ -82,7 +83,7 @@ const UpliftModeling: React.FC = () => {
       />
 
       {/* Fixed Navigation */}
-      <div
+      <div className="ember-nav"
         style={{
           position: 'fixed',
           top: 0,
@@ -319,126 +320,29 @@ const UpliftModeling: React.FC = () => {
             Once you accept that an email can change an outcome in either direction, your database splits into four groups. Only one of them is worth the send.
           </p>
 
-          {/* Matrix table */}
-          <div style={{ display: 'grid', gridTemplateColumns: '30px repeat(2, 1fr)', gap: 0 }}>
-            <div></div>
-            <div
-              style={{
-                padding: '0 32px 12px',
-                fontFamily: "'IBM Plex Mono', monospace",
-                fontSize: '10.5px',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: '#4E463B'
-              }}
-            >
-              Wouldn't convert on their own
-            </div>
-            <div
-              style={{
-                padding: '0 32px 12px',
-                fontFamily: "'IBM Plex Mono', monospace",
-                fontSize: '10.5px',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: '#4E463B'
-              }}
-            >
-              Would convert on their own
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', justifycontent: 'center' }}>
-              <span
-                style={{
-                  fontFamily: "'IBM Plex Mono', monospace",
-                  fontSize: '10.5px',
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  color: '#4E463B',
-                  writingMode: 'vertical-rl',
-                  transform: 'rotate(180deg)',
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                Converts after your email
-              </span>
-            </div>
-            <div
-              style={{
-                gridColumn: '2 / span 2',
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '1px',
-                background: '#CDBAA4',
-                border: '1px solid #CDBAA4',
-                borderBottom: 'none'
-              }}
-            >
-              <div style={{ background: '#F6EEE4', padding: '30px 32px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10.5px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8F2F06' }}>
-                  Worth the email
-                </span>
-                <span style={{ fontSize: '22px', fontWeight: 500, letterSpacing: '-0.02em' }}>Persuadable</span>
-                <span style={{ fontSize: '15.5px', lineHeight: 1.65, color: '#4A4238' }}>
-                  Converts if you write, doesn't if you don't. The entire return on the campaign comes from this group.
-                </span>
-              </div>
-              <div style={{ background: '#EDE4D8', padding: '30px 32px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10.5px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#4E463B' }}>
-                  Wasted spend
-                </span>
-                <span style={{ fontSize: '22px', fontWeight: 500, letterSpacing: '-0.02em' }}>Sure thing</span>
-                <span style={{ fontSize: '15.5px', lineHeight: 1.65, color: '#4A4238' }}>
-                  Converts either way. A response model ranks these highest, because they look exactly like your customers &mdash; they already are one, they just haven't paid yet.
-                </span>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', justifycontent: 'center' }}>
-              <span
-                style={{
-                  fontFamily: "'IBM Plex Mono', monospace",
-                  fontSize: '10.5px',
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  color: '#4E463B',
-                  writingMode: 'vertical-rl',
-                  transform: 'rotate(180deg)',
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                Doesn't convert after it
-              </span>
-            </div>
-            <div
-              style={{
-                gridColumn: '2 / span 2',
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '1px',
-                background: '#CDBAA4',
-                border: '1px solid #CDBAA4'
-              }}
-            >
-              <div style={{ background: '#EDE4D8', padding: '30px 32px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10.5px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#4E463B' }}>
-                  Wasted spend
-                </span>
-                <span style={{ fontSize: '22px', fontWeight: 500, letterSpacing: '-0.02em' }}>Lost cause</span>
-                <span style={{ fontSize: '15.5px', lineHeight: 1.65, color: '#4A4238' }}>
-                  Never converts. Harmless, but every send to this group dilutes your numbers and your sender reputation.
-                </span>
-              </div>
-              <div style={{ background: '#F0E2D0', padding: '30px 32px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10.5px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8F2F06' }}>
-                  Actively harmful
-                </span>
-                <span style={{ fontSize: '22px', fontWeight: 500, letterSpacing: '-0.02em' }}>Do-not-disturb</span>
-                <span style={{ fontSize: '15.5px', lineHeight: 1.65, color: '#4A4238' }}>
-                  Would have converted, but the email reminds them they aren't using the product. They unsubscribe instead. Nothing in a response model prevents this send.
-                </span>
-              </div>
-            </div>
+          {/* Desktop comparison axes become explicit labels on each mobile card. */}
+          <div className="ember-matrix">
+            <div className="ember-matrix-axis" />
+            <div className="ember-matrix-axis ember-column-label">Wouldn't convert on their own</div>
+            <div className="ember-matrix-axis ember-column-label">Would convert on their own</div>
+            {[
+              { outcome: 'Converts after your email', cards: [
+                { name: 'Persuadable', label: 'Worth the email', own: "Wouldn't convert on their own", tone: 'positive', copy: "Converts if you write, doesn't if you don't. The entire return on the campaign comes from this group." },
+                { name: 'Sure thing', label: 'Wasted spend', own: 'Would convert on their own', tone: 'neutral', copy: "Converts either way. A response model ranks these highest, because they look exactly like your customers — they already are one, they just haven't paid yet." },
+              ] },
+              { outcome: "Doesn't convert after your email", cards: [
+                { name: 'Lost cause', label: 'Wasted spend', own: "Wouldn't convert on their own", tone: 'neutral', copy: 'Never converts. Harmless, but every send to this group dilutes your numbers and your sender reputation.' },
+                { name: 'Do-not-disturb', label: 'Actively harmful', own: 'Would convert on their own', tone: 'negative', copy: "Would have converted, but the email reminds them they aren't using the product. They unsubscribe instead. Nothing in a response model prevents this send." },
+              ] },
+            ].map(row => <React.Fragment key={row.outcome}>
+              <div className="ember-matrix-axis ember-row-label"><span>{row.outcome}</span></div>
+              {row.cards.map(card => <article className={`ember-matrix-card ember-matrix-${card.tone}`} key={card.name}>
+                <span className="ember-card-label">{card.label}</span>
+                <h3>{card.name}</h3>
+                <p className="ember-mobile-outcome">{card.own}<br />{row.outcome}</p>
+                <p className="ember-card-copy">{card.copy}</p>
+              </article>)}
+            </React.Fragment>)}
           </div>
 
           <p
@@ -514,7 +418,7 @@ const UpliftModeling: React.FC = () => {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', marginTop: '44px' }}>
-            <div style={{ borderTop: '1px solid #DCCAB6', padding: '26px 0', display: 'grid', gridTemplateColumns: '0.35fr 1fr', gap: '40px', alignItems: 'baseline' }}>
+            <div className="ember-detail-row" style={{ borderTop: '1px solid #DCCAB6', padding: '26px 0', display: 'grid', gridTemplateColumns: '0.35fr 1fr', gap: '40px', alignItems: 'baseline' }}>
               <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8F2F06' }}>
                 Step one
               </span>
@@ -522,7 +426,7 @@ const UpliftModeling: React.FC = () => {
                 We take the users who already paid you and reconstruct what they did before they paid &mdash; in order, with timing. For most products this is a short sequence, not a long profile. Loading real data rather than the sample set is usually in it.
               </span>
             </div>
-            <div style={{ borderTop: '1px solid #DCCAB6', padding: '26px 0', display: 'grid', gridTemplateColumns: '0.35fr 1fr', gap: '40px', alignItems: 'baseline' }}>
+            <div className="ember-detail-row" style={{ borderTop: '1px solid #DCCAB6', padding: '26px 0', display: 'grid', gridTemplateColumns: '0.35fr 1fr', gap: '40px', alignItems: 'baseline' }}>
               <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8F2F06' }}>
                 Step two
               </span>
@@ -530,7 +434,7 @@ const UpliftModeling: React.FC = () => {
                 We score everyone who hasn't paid on how far into that sequence they got, and where they stopped. Someone who loaded real data and stalled before their first query is deep in the pattern with one step missing. Someone who never got past signup is not.
               </span>
             </div>
-            <div style={{ borderTop: '1px solid #DCCAB6', padding: '26px 0', display: 'grid', gridTemplateColumns: '0.35fr 1fr', gap: '40px', alignItems: 'baseline' }}>
+            <div className="ember-detail-row" style={{ borderTop: '1px solid #DCCAB6', padding: '26px 0', display: 'grid', gridTemplateColumns: '0.35fr 1fr', gap: '40px', alignItems: 'baseline' }}>
               <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8F2F06' }}>
                 Step three
               </span>
@@ -538,7 +442,7 @@ const UpliftModeling: React.FC = () => {
                 The missing step decides the message. Not "here's what our product does" &mdash; the one action that stands between where they are and where your customers were. That's why the email carries a query rather than a feature tour.
               </span>
             </div>
-            <div style={{ borderTop: '1px solid #DCCAB6', borderBottom: '1px solid #DCCAB6', padding: '26px 0', display: 'grid', gridTemplateColumns: '0.35fr 1fr', gap: '40px', alignItems: 'baseline' }}>
+            <div className="ember-detail-row" style={{ borderTop: '1px solid #DCCAB6', borderBottom: '1px solid #DCCAB6', padding: '26px 0', display: 'grid', gridTemplateColumns: '0.35fr 1fr', gap: '40px', alignItems: 'baseline' }}>
               <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8F2F06' }}>
                 Step four
               </span>
@@ -579,7 +483,7 @@ const UpliftModeling: React.FC = () => {
 
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {/* posterior predictive check */}
-            <div style={{ borderTop: '1px solid #CDBAA4', padding: '28px 0', display: 'grid', gridTemplateColumns: '0.4fr 1fr', gap: '44px', alignItems: 'baseline' }}>
+            <div className="ember-detail-row" style={{ borderTop: '1px solid #CDBAA4', padding: '28px 0', display: 'grid', gridTemplateColumns: '0.4fr 1fr', gap: '44px', alignItems: 'baseline' }}>
               <span style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                 <span style={{ display: 'block', width: '82px', height: '44px', marginBottom: '4px' }}>
                   <svg viewBox="0 0 82 44" style={{ width: '100%', height: '100%', display: 'block', overflow: 'visible' }}>
@@ -599,7 +503,7 @@ const UpliftModeling: React.FC = () => {
             </div>
 
             {/* Linearity */}
-            <div style={{ borderTop: '1px solid #CDBAA4', padding: '28px 0', display: 'grid', gridTemplateColumns: '0.4fr 1fr', gap: '44px', alignItems: 'baseline' }}>
+            <div className="ember-detail-row" style={{ borderTop: '1px solid #CDBAA4', padding: '28px 0', display: 'grid', gridTemplateColumns: '0.4fr 1fr', gap: '44px', alignItems: 'baseline' }}>
               <span style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                 <span style={{ display: 'block', width: '82px', height: '44px', marginBottom: '4px' }}>
                   <svg viewBox="0 0 82 44" style={{ width: '100%', height: '100%', display: 'block', overflow: 'visible' }}>
@@ -619,7 +523,7 @@ const UpliftModeling: React.FC = () => {
             </div>
 
             {/* Variance */}
-            <div style={{ borderTop: '1px solid #CDBAA4', padding: '28px 0', display: 'grid', gridTemplateColumns: '0.4fr 1fr', gap: '44px', alignItems: 'baseline' }}>
+            <div className="ember-detail-row" style={{ borderTop: '1px solid #CDBAA4', padding: '28px 0', display: 'grid', gridTemplateColumns: '0.4fr 1fr', gap: '44px', alignItems: 'baseline' }}>
               <span style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                 <span style={{ display: 'block', width: '82px', height: '44px', marginBottom: '4px' }}>
                   <svg viewBox="0 0 82 44" style={{ width: '100%', height: '100%', display: 'block', overflow: 'visible' }}>
@@ -639,7 +543,7 @@ const UpliftModeling: React.FC = () => {
             </div>
 
             {/* Residuals */}
-            <div style={{ borderTop: '1px solid #CDBAA4', padding: '28px 0', display: 'grid', gridTemplateColumns: '0.4fr 1fr', gap: '44px', alignItems: 'baseline' }}>
+            <div className="ember-detail-row" style={{ borderTop: '1px solid #CDBAA4', padding: '28px 0', display: 'grid', gridTemplateColumns: '0.4fr 1fr', gap: '44px', alignItems: 'baseline' }}>
               <span style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                 <span style={{ display: 'block', width: '82px', height: '44px', marginBottom: '4px' }}>
                   <svg viewBox="0 0 82 44" style={{ width: '100%', height: '100%', display: 'block', overflow: 'visible' }}>
@@ -665,7 +569,7 @@ const UpliftModeling: React.FC = () => {
             </div>
 
             {/* Normalization */}
-            <div style={{ borderTop: '1px solid #CDBAA4', borderBottom: '1px solid #CDBAA4', padding: '28px 0', display: 'grid', gridTemplateColumns: '0.4fr 1fr', gap: '44px', alignItems: 'baseline' }}>
+            <div className="ember-detail-row" style={{ borderTop: '1px solid #CDBAA4', borderBottom: '1px solid #CDBAA4', padding: '28px 0', display: 'grid', gridTemplateColumns: '0.4fr 1fr', gap: '44px', alignItems: 'baseline' }}>
               <span style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                 <span style={{ display: 'block', width: '82px', height: '44px', marginBottom: '4px' }}>
                   <svg viewBox="0 0 82 44" style={{ width: '100%', height: '100%', display: 'block', overflow: 'visible' }}>
@@ -705,7 +609,7 @@ const UpliftModeling: React.FC = () => {
 
       {/* Section 5: Bibliography */}
       <section style={{ padding: '0 40px 14vh' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: '72px', alignItems: 'start' }}>
+        <div className="ember-bibliography" style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: '72px', alignItems: 'start' }}>
           <div>
             <h2
               style={{
