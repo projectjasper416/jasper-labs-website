@@ -204,7 +204,7 @@ const UpliftModeling: React.FC = () => {
                 <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#8F2F06' }}></span>
                 <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#D6C4B0' }}></span>
                 <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#D6C4B0' }}></span>
-                
+
                 {/* Row 2 */}
                 <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#D6C4B0' }}></span>
                 <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#D6C4B0' }}></span>
