@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { contactConfig } from '../config/contact';
 
 const CONTACT_EMAIL = 'projectjasper416@gmail.com';
 
@@ -31,9 +32,9 @@ const AuditFloatingButton: React.FC<AuditFloatingButtonProps> = ({ aboveBottomNa
     setFormState('loading');
 
     // Same EmailJS service, template, and key as the contact form on the home page.
-    const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
-    const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
-    const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
+    const EMAILJS_SERVICE_ID = contactConfig.serviceId;
+    const EMAILJS_TEMPLATE_ID = contactConfig.templateId;
+    const EMAILJS_PUBLIC_KEY = contactConfig.publicKey;
 
     try {
       await emailjs.send(

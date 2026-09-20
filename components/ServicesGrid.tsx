@@ -19,7 +19,7 @@ const ServicesGrid: React.FC = () => {
     },
     {
       icon: PhoneCall,
-      title: 'AI Voice Receptionist',
+      title: 'AI Voice Agent',
       description:
         'Answers every call, books into your calendar, sends confirmations, and follows up. Runs 24/7 on your existing number. Live in under a week.',
     },

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Mail, PhoneCall } from 'lucide-react';
 import resumeSetGoLogo from '../assets/resumesetgo.png';
+import emberLogo from '../assets/ember-logo.png';
 
 interface ProductShowcaseProps {
     onContact: () => void;
@@ -22,13 +23,22 @@ interface Product {
 const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onContact }) => {
     const products: Product[] = [
         {
-            tag: 'AI Job Search Co-Pilot',
-            name: 'ResumeSetGo',
+            tag: 'AI Uplift Modeling Platform',
+            name: 'Ember',
             description:
-                'Your AI co-pilot for the job hunt — tailors resumes to each role, surfaces the right openings, and helps you stop rewriting and start landing.',
-            logo: resumeSetGoLogo,
-            href: 'https://resumesetgo.in/',
-            cta: 'Visit Site',
+                'Calculates individual conversion lift to focus campaigns on persuadable users. Mapped directly to your database, avoiding both sure-things and un-subscribers.',
+            logo: emberLogo,
+            to: '/products/uplift-modeling',
+            cta: 'Learn More',
+        },
+        {
+            tag: 'Custom AI Voice Agent',
+            name: 'Voice Agent',
+            description:
+                'A 24/7 AI voice agent customized to your business — answering every call to handle appointment booking and changes, customer support, and anything else your workflow needs.',
+            icon: PhoneCall,
+            to: '/products/voice-agent',
+            cta: 'Learn More',
         },
         {
             tag: 'AI Email Marketing Agent',
@@ -40,13 +50,13 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onContact }) => {
             cta: 'Learn More',
         },
         {
-            tag: 'Custom AI Voice Agent',
-            name: 'Voice Agent',
+            tag: 'AI Job Search Co-Pilot',
+            name: 'ResumeSetGo',
             description:
-                'A 24/7 AI voice receptionist customized to your business — answering every call to handle appointment booking and changes, customer support, and anything else your workflow needs.',
-            icon: PhoneCall,
-            to: '/products/voice-agent',
-            cta: 'Learn More',
+                'Your AI co-pilot for the job hunt — tailors resumes to each role, surfaces the right openings, and helps you stop rewriting and start landing.',
+            logo: resumeSetGoLogo,
+            href: 'https://resumesetgo.in/',
+            cta: 'Visit Site',
         },
     ];
 
@@ -54,7 +64,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onContact }) => {
         'flex flex-col h-full p-8 text-left hover:bg-blue-600 hover:text-white transition-colors duration-300 focus:outline-none focus-visible:bg-blue-600 focus-visible:text-white';
 
     return (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-[2px] border-2 border-black bg-black">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-[2px] border-2 border-black bg-black">
             {products.map((product, index) => {
                 const Icon = product.icon;
                 const inner = (

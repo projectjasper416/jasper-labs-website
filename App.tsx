@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Founders from './pages/Founders';
 import EmailMarketingAgent from './pages/products/EmailMarketingAgent';
 import VoiceAgent from './pages/products/VoiceAgent';
+import UpliftModeling from './pages/products/UpliftModeling';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
         <Route path="/founders" element={<Founders />} />
         <Route path="/products/email-marketing-agent" element={<EmailMarketingAgent />} />
         <Route path="/products/voice-agent" element={<VoiceAgent />} />
+        <Route path="/products/uplift-modeling" element={<UpliftModeling />} />
       </Routes>
     </BrowserRouter>
   );

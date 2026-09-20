@@ -1,0 +1,44 @@
+/* Founder profiles share the homepage's type, colour, and navigation language. */
+.founders-nav { display:flex; align-items:center; gap:32px; }
+.founders-intro { padding-top:72px; padding-bottom:60px; }
+.founders-intro>.eyebrow { color:var(--blue); margin-bottom:26px; }
+.founders-intro-grid { display:grid; grid-template-columns:1.15fr 1fr; gap:64px; align-items:end; }
+.founders-intro h1 { font-size:clamp(3.75rem,6.5vw,6rem); font-weight:600; line-height:1.04; letter-spacing:-.045em; }
+.founders-intro p { max-width:36ch; padding-bottom:8px; font-size:1.1875rem; color:var(--muted); line-height:1.6; }
+.founders-profiles { display:grid; grid-template-columns:1fr 1fr; gap:64px; padding-top:44px; padding-bottom:96px; border-top:1px solid var(--line); }
+.founder-profile { min-width:0; }
+.founder-portrait { aspect-ratio:4/3; overflow:hidden; background:#f1f3f5; }
+.founder-portrait img { display:block; width:100%; height:100%; object-fit:cover; }
+.founder-vinay .founder-portrait img { object-position:50% 30%; }
+.founder-aditya .founder-portrait img { object-position:50% 30%; }
+.founder-details { padding-top:28px; }
+.founder-details .eyebrow { color:var(--blue); }
+.jl .founder-details h2 { margin:10px 0 18px; font-size:clamp(1.75rem,2.7vw,2.625rem); letter-spacing:-.03em; line-height:1.15; }
+.founder-details p { max-width:52ch; font-size:1rem; line-height:1.75; color:var(--muted); }
+.founders-contact { background:#e9f1ff; border-top:1px solid #cfdef1; border-bottom:1px solid #cfdef1; padding:72px 0; }
+.founders-contact-grid { display:grid; grid-template-columns:1.15fr 1fr; align-items:center; gap:64px; }
+.founders-contact h2 { margin-top:22px; }
+.founders-contact .eyebrow { color:#45617f; }
+.founders-contact-copy p { max-width:42ch; color:#4c6174; margin-bottom:24px; }
+.founders-email { display:flex; align-items:center; gap:8px; width:fit-content; max-width:100%; min-height:44px; margin-top:16px; font-size:.875rem; overflow-wrap:anywhere; }
+.founders-email svg { flex-shrink:0; }
+@media(max-width:1100px) {
+ .founders-intro-grid,.founders-contact-grid,.founders-profiles { gap:36px; }
+}
+@media(max-width:760px) {
+ .founders-nav { gap:0; }
+ .founders-nav>.button { display:none; }
+ .founders-nav .text-link { font-size:.75rem; gap:6px; }
+ .founders-intro { padding-top:44px; padding-bottom:36px; }
+ .founders-intro>.eyebrow { font-size:.625rem; margin-bottom:22px; }
+ .founders-intro-grid,.founders-contact-grid { grid-template-columns:1fr; gap:24px; }
+ .founders-intro h1 { font-size:clamp(3.25rem,12vw,5rem); }
+ .founders-intro p { font-size:1.0625rem; padding:0; max-width:40ch; }
+ .founders-profiles { grid-template-columns:1fr; gap:40px; padding-top:28px; padding-bottom:56px; }
+ .founder-profile+.founder-profile { border-top:1px solid var(--line); padding-top:32px; }
+ .founder-details { padding-top:22px; }
+ .jl .founder-details h2 { font-size:2rem; margin-bottom:16px; }
+ .founders-contact { padding:48px 0; }
+ .founders-contact h2 { font-size:clamp(2rem,7.5vw,3rem); }
+ .founders-contact-copy .button { width:100%; }
+}

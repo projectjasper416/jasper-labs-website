@@ -56,3 +56,7 @@ const EMAILJS_PUBLIC_KEY = 'your_public_key';
 
 Replace the placeholder values on lines 87-89 of `App.tsx`.
 
+
+## Current website configuration (15 September 2026)
+
+`config/contact.ts` now supplies the same public EmailJS service ID, template ID, public key, and recipient used by the deployed `jasperlabs.in` browser bundle. Both the homepage form and floating audit form use it. VITE_EMAILJS_* environment variables can still override these browser-public identifiers. No private EmailJS account credentials were copied. Configuration parity was checked; no email was sent during verification.
