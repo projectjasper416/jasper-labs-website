@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import './assets/fonts/fonts.css';
 
 // Older links used hash routing (/#/products/...). Rewrite them to the real
 // path before React mounts so they keep working.

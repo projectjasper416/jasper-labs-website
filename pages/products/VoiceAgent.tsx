@@ -96,7 +96,7 @@ const VoiceAgent: React.FC = () => {
                 <div className="max-w-6xl mx-auto">
                     <motion.div {...fadeUp} className="inline-flex items-center gap-3 border-2 border-black px-4 py-2 mb-8">
                         <PhoneCall className="w-5 h-5" />
-                        <span className="text-xs font-bold font-mono uppercase tracking-[0.2em]">AI Voice Receptionist</span>
+                        <span className="text-xs font-bold font-mono uppercase tracking-[0.2em]">AI Voice Agent</span>
                     </motion.div>
 
                     <motion.h1

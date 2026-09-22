@@ -1,0 +1,25 @@
+.ember-matrix { display:grid; grid-template-columns:30px repeat(2,minmax(0,1fr)); }
+.ember-matrix-axis,.ember-card-label { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:#4e463b; }
+.ember-column-label { padding:0 32px 12px; }
+.ember-row-label { display:flex; align-items:center; justify-content:center; }
+.ember-row-label span { writing-mode:vertical-rl; transform:rotate(180deg); white-space:nowrap; }
+.ember-matrix-card { min-width:0; padding:30px 32px; display:flex; flex-direction:column; gap:10px; background:#ede4d8; border:1px solid #cdbaa4; }
+.ember-matrix-positive { background:#f6eee4; }
+.ember-matrix-negative { background:#f0e2d0; }
+.ember-matrix-positive .ember-card-label,.ember-matrix-negative .ember-card-label { color:#8f2f06; }
+.ember-matrix-card h3 { font-size:22px; font-weight:500; letter-spacing:-.02em; margin:0; }
+.ember-card-copy { font-size:15.5px; line-height:1.65; color:#4a4238; margin:0; }
+.ember-mobile-outcome { display:none; }
+@media(max-width:700px) {
+ .ember-page>section,.ember-page>footer { padding-left:20px!important; padding-right:20px!important; }
+ .ember-nav { padding:18px 20px!important; gap:16px; }
+ .ember-nav img { width:112px!important; }
+ .ember-nav>a:last-child { font-size:10px!important; letter-spacing:.1em!important; }
+ .ember-matrix { grid-template-columns:minmax(0,1fr); gap:16px; }
+ .ember-matrix-axis { display:none; }
+ .ember-matrix-card { padding:24px; }
+ .ember-mobile-outcome { display:block; margin:0; padding-bottom:12px; border-bottom:1px solid #cdbaa4; font-size:12px; line-height:1.6; color:#4e463b; }
+ .ember-bibliography,.ember-detail-row { grid-template-columns:minmax(0,1fr)!important; gap:20px!important; }
+ .ember-bibliography>div { min-width:0; }
+ .ember-bibliography a { grid-template-columns:minmax(0,1fr) auto!important; gap:16px!important; }
+}

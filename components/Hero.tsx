@@ -65,9 +65,9 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
                         variants={fadeUp}
                         className="text-xl sm:text-2xl text-gray-400 font-mono max-w-2xl mx-auto border-l-2 border-blue-600 pl-6 text-left md:text-center md:border-l-0 md:border-t-2 md:pt-6"
                     >
-                        ENGINEERING CUSTOM AI AGENTS &
+                        FORWARD DEPLOYED AI ENGINEERING.
                         <br />
-                        END-TO-END WORKFLOW AUTOMATIONS.
+                        WE BUILD CUSTOM AGENTS & SYSTEMS FOR YOUR STACK.
                     </motion.p>
 
                     <motion.div variants={fadeUp} className="pt-8 flex justify-center">
