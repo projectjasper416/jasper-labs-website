@@ -54,7 +54,7 @@ const Founders: React.FC = () => {
       </section>
       <section className="founders-profiles jl-wrap" aria-label="Founder profiles">
         {founders.map((founder, index) => <article className={`founder-profile ${founder.className}`} key={founder.name} aria-labelledby={`founder-${index}`}>
-          <div className="founder-portrait"><img src={founder.photo} alt={founder.name} width={index === 0 ? 3947 : 934} height={index === 0 ? 5920 : 1001} decoding="async" /></div>
+          <div className="founder-portrait"><img src={founder.photo} alt={founder.name} width={index === 0 ? 768 : 934} height={index === 0 ? 1024 : 1001} decoding="async" /></div>
           <div className="founder-details">
             <span className="eyebrow">{founder.role}</span>
             <h2 id={`founder-${index}`}>{founder.name}</h2>
