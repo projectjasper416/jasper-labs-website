@@ -13,7 +13,7 @@ import indiaBusiness from '../assets/india-business-hero.jpg';
 import jasperLogo3d from '../assets/jasper-logo-3d.jpg';
 import bluekeyLogo from '../assets/clients/bluekey.png';
 import twillsLogo from '../assets/clients/twills.png';
-import nairaLogo from '../assets/clients/naira-fashion.jpg';
+import nairaLogo from '../assets/clients/naira.png';
 import fashionGuysLogo from '../assets/clients/fashion-guys.png';
 
 const Arrow = () => <ArrowUpRight size={18} aria-hidden="true" />;
@@ -88,7 +88,7 @@ const Home: React.FC = () => {
         <ul className="client-logos">
           <li><a href="https://bluekeyinteriors.com/" target="_blank" rel="noopener noreferrer" aria-label="Blue Key Interiors (opens in a new tab)"><img className="client-bluekey" src={bluekeyLogo} alt="Blue Key Interiors" width="346" height="72" loading="lazy" decoding="async" /></a></li>
           <li><a href="https://www.twills.in/" target="_blank" rel="noopener noreferrer" aria-label="Twills (opens in a new tab)"><img className="client-twills" src={twillsLogo} alt="Twills" width="256" height="46" loading="lazy" decoding="async" /></a></li>
-          <li><a href="https://www.instagram.com/fashionbeauty0909/" target="_blank" rel="noopener noreferrer" aria-label="Naira Fashion (opens in a new tab)"><img className="client-naira" src={nairaLogo} alt="Naira Fashion" width="1080" height="1080" loading="lazy" decoding="async" /></a></li>
+          <li><a href="https://therhythm.co.in/" target="_blank" rel="noopener noreferrer" aria-label="Naira Fashion (opens in a new tab)"><img className="client-naira" src={nairaLogo} alt="Naira Fashion" width="533" height="344" loading="lazy" decoding="async" /></a></li>
           <li><a href="https://fashionguys.in/" target="_blank" rel="noopener noreferrer" aria-label="Fashion Guys (opens in a new tab)"><img className="client-fashion-guys" src={fashionGuysLogo} alt="Fashion Guys" width="1500" height="1201" loading="lazy" decoding="async" /></a></li>
         </ul>
       </section>

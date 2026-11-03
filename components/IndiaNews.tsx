@@ -11,7 +11,6 @@ export function validReading(item: Reading) {
 }
 export default function IndiaNews() {
   const [news, setNews] = useState<News | null>(null);
-  const [error, setError] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
     async function load() {
@@ -23,8 +22,7 @@ export default function IndiaNews() {
         const items = data.items.filter(validReading);
         // Keep a previously loaded good list on empty or malformed updates.
         setNews(previous => items.length ? {...data,items} : previous);
-        setError(items.length===0);
-      } catch { if (!controller.signal.aborted) setError(true); }
+      } catch { /* Keep showing saved readings. */ }
     }
     load();
     const interval = setInterval(load, 30 * 60 * 1000);
@@ -32,11 +30,9 @@ export default function IndiaNews() {
   }, []);
   const readings = news?.items.length ? news.items : fallback;
   const items = [...new Map([...readings,...fallback].map(item=>[item.url,item])).values()].slice(0,3);
-  const old = news?.fetchedAt && Date.now() - Date.parse(news.fetchedAt) > 86400000;
   return <section className="india-news jl-wrap" aria-labelledby="news-heading">
     <div className="news-intro"><span className="eyebrow">04 / INDIA BUSINESS BRIEF</span><h2 id="news-heading">Tools for <em>growth.</em></h2><p>Practical AI and technology ideas for entrepreneurs and smaller businesses in India.</p></div>
     <div className="news-content"><div className="news-list">{items.map(item => <a href={item.url} target="_blank" rel="noopener noreferrer" key={item.url}><div><span>{item.source} · {item.kind}{item.publishedAt ? <> · <time dateTime={item.publishedAt}>{formatDate(item.publishedAt)}</time></> : item.dateLabel ? ` · ${item.dateLabel}` : ''}</span><h3>{item.title}</h3></div><ArrowUpRight size={18}/></a>)}</div>
-      <p className="news-update">RSS stories and selected practical guides. {news?.mode === 'polling' ? 'Checked every 30 minutes while this page is open.' : 'Saved reading list; refreshed when the site is updated.'}{news?.fetchedAt ? ` Last checked ${formatDate(news.fetchedAt)}.` : ''}{(news?.stale || error || old) ? ' Showing saved readings while updates are unavailable.' : ''} Publisher articles open on their own websites.</p>
       {!!news?.sources?.length && <details className="news-sources"><summary>RSS sources</summary><ul>{news.sources.map(source=><li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name}</a></li>)}</ul></details>}
     </div>
   </section>;

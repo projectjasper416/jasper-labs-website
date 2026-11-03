@@ -120,8 +120,7 @@
 .news-list h3 { font-size:1.125rem; line-height:1.4; margin-top:7px; max-width:560px;  font-weight:500; }
 .news-list a:hover h3 { color:var(--blue); }
 .news-list svg { flex-shrink:0; margin-top:22px; }
-.news-update { font-size:.75rem; color:var(--muted); line-height:1.7; margin-top:15px!important; }
-.news-update a,.news-empty a { text-decoration:underline; }
+.news-empty a { text-decoration:underline; }
 .news-empty { font-size:1rem; color:var(--muted); }
 .faq { display:grid; grid-template-columns:1fr 1.2fr; gap:75px; }
 .faq h2 { font-size:2.75rem; margin-top:25px; }
@@ -275,7 +274,7 @@
 .client-logos img { display:block; max-width:100%; height:auto; object-fit:contain; }
 .client-bluekey { width:220px; }
 .client-twills { width:174px; }
-.client-naira { width:96px; }
+.client-naira { width:150px; }
 .client-fashion-guys { width:120px; }
 @media(max-width:1100px) { .clients { gap:24px; } .jl .clients h2 { flex-basis:140px; } .client-logos { grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; } }
 @media(max-width:760px) {
