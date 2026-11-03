@@ -4,7 +4,7 @@ import { X, Check, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { contactConfig } from '../config/contact';
 
-const CONTACT_EMAIL = 'projectjasper416@gmail.com';
+const CONTACT_EMAIL = 'contact@jasperlabs.in';
 
 interface AuditFloatingButtonProps {
   aboveBottomNav?: boolean;

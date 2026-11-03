@@ -65,7 +65,7 @@ const Founders: React.FC = () => {
       <section className="founders-contact" aria-labelledby="founders-contact-title">
         <div className="jl-wrap founders-contact-grid">
           <div><span className="eyebrow">START WITH A CONVERSATION</span><h2 id="founders-contact-title">What could AI<br />do for <em>your business?</em></h2></div>
-          <div className="founders-contact-copy"><p>Bring the work that takes too much of your team's time. Our free AI audit helps you find a practical starting point.</p><Link to="/" state={{ section: 'contact' }} className="button">Get a free AI audit <Arrow /></Link><a className="founders-email" href="mailto:projectjasper416@gmail.com">projectjasper416@gmail.com <Arrow /></a></div>
+          <div className="founders-contact-copy"><p>Bring the work that takes too much of your team's time. Our free AI audit helps you find a practical starting point.</p><Link to="/" state={{ section: 'contact' }} className="button">Get a free AI audit <Arrow /></Link><a className="founders-email" href="mailto:contact@jasperlabs.in">contact@jasperlabs.in <Arrow /></a></div>
         </div>
       </section>
     </main>
